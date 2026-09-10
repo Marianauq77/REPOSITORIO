@@ -57,7 +57,7 @@ public class Tarea_1 {
         return suma;
     }
 
-    //4. Dinujar en una matriz un espiral de numeros
+    //4. Dibujar en una matriz un espiral de numeros
     public static int[][] dibujarEspiral() {
         int matriz[][] = new int[3][3];
         int numero = 0;
@@ -100,7 +100,7 @@ public class Tarea_1 {
         }
         return mensaje;
     }
-    // Dinujar X en una matriz
+    // Dibujar X en una matriz
     public static int [][] dibujarX(){
         int matriz[][]= new int [3][3];
         for(int i=0; i<matriz.length; i++){
