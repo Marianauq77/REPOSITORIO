@@ -117,7 +117,7 @@ public class Hotel {
         return mensaje;
     }
     public Huesped consultarHuespedPorTelefono (String telefono){
-        for(Huesped aux : listaHuespedes){
+        for(Huesped aux : listaHuespedes){  // Le da la lista de huespedes y si encuentra uno con el telefono lo duevuelve
             if(aux.getTelefono().equals(telefono)){
                 return aux;
             }
@@ -153,11 +153,47 @@ public class Hotel {
     public Habitacion buscarHabitacionMayorPrecio() {
         Habitacion mayor = null;
         for (Habitacion aux : habitaciones) {
+            if (aux != null && (mayor == null || aux.getPrecioNoche() > mayor.getPrecioNoche())) { //Puede ser null porque es la primera habitacion valida, entonces no hay con quien comparar
+                mayor = aux;
+            }
+        }
+        return mayor;
+    }
+    public Habitacion buscarHabitacionMenorPrecio() {
+        Habitacion mayor = null;
+        for (Habitacion aux : habitaciones) {
             if (aux != null && (mayor == null || aux.getPrecioNoche() > mayor.getPrecioNoche())) {
                 mayor = aux;
             }
         }
         return mayor;
+    }
+    public int contarHabitacionesDisponibles() {
+        int contador = 0;
+        for (Habitacion aux : habitaciones) {
+            if (aux!=null && aux.getEstado().equalsIgnoreCase("Disponible")) { // El aux accede a una habitacion
+                contador++;
+            }
+        }
+        return contador;
+    }
+    public int contarHabitacionesOcupadas() {
+        int contador = 0;
+        for (Habitacion aux : habitaciones) {
+            if (aux!=null && aux.getEstado().equalsIgnoreCase("Ocupada")) { // El aux accede a una habitacion
+                contador++;
+            }
+        }
+        return contador;
+    }
+    public int contarHabitacionesMantenimiento() {
+        int contador = 0;
+        for (Habitacion aux : habitaciones) {
+            if (aux!=null && aux.getEstado().equalsIgnoreCase("Mantenimiento")) { // El aux accede a una habitacion
+                contador++;
+            }
+        }
+        return contador;
     }
 
 }

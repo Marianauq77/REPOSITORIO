@@ -89,6 +89,7 @@ public class Main {
         if (huesped == null) {
             JOptionPane.showMessageDialog(null, "No existe un huesped con ese telefono. " +
                     "Registrelo primero (opcion 1).");
+            return; // ==> Corta el metodo completo
         }
         int codigo = Integer.parseInt(JOptionPane.showInputDialog(null, "Codigo de reserva"));
         String estado = "Confirmada";

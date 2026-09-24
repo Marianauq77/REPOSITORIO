@@ -79,7 +79,7 @@ public class Habitacion {
                 '}';
     }
     public boolean estaDisponible (){
-        return estado.equals("Disponible");
+        return estado.equalsIgnoreCase("Disponible");
 
     }
 }
