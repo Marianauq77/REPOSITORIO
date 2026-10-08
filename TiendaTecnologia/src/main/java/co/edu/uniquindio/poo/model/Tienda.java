@@ -111,5 +111,16 @@ public class Tienda {
         }
         return resultado;
     }
+    //2. Obtener los productos agotados
+    public ArrayList<String> obtenerCodigosProductosAgotados2(int limiteInferior, int limiteSuperior) {
+        ArrayList<String> resultado = new ArrayList<>();
+        for (Producto aux : listaProductos.values()) {
+            if (aux.getCantidadDisponible() >= 10 && aux.getCantidadDisponible() < 50) {
+                resultado.add(aux.getCodigo());
+            }
+        }
+        return resultado;
+    }
+
 }
 
