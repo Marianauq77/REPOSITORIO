@@ -133,5 +133,21 @@ public class Tienda {
         }
         return listaClientes;
     }
+    // Profe, me acabo de dar cuenta que hice solo un push para los puntos 1,2 y 3. Tuve que lidiar mucho con el desktop y despues la super embarre con eso
+    //4. Obtern las facturas que tenga un cliente donde su nombre empiece con R
+    public ArrayList<Factura> obtenerFacturasClienteConR() {
+        ArrayList<Factura> resultado = new ArrayList<>();
+
+        for (Factura aux : listaFacturas) {
+            if (aux.tieneClienteConR()) {
+                resultado.add(aux);
+            }
+        }
+
+        return resultado;
+    }
+
 }
+
+
 
