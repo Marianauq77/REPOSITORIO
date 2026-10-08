@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo.model;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class Tienda {
@@ -121,6 +122,16 @@ public class Tienda {
         }
         return resultado;
     }
-
+    // Obtener clientes que compraron el 07 de octubre
+    public ArrayList<Cliente> obtenerClientesCompras() {
+        ArrayList<Cliente> listaClientes = new ArrayList<>();
+        LocalDate fechaBuscada = LocalDate.of(2026, 10, 7);
+        for (Factura aux: listaFacturas) {
+            if (aux.fecha().isEqual(fechaBuscada)) {
+                listaClientes.add(aux.cliente());
+            }
+        }
+        return listaClientes;
+    }
 }
 
