@@ -102,6 +102,7 @@ public class Tienda {
         }
         return "No existe un cliente registrado con ese documento";
     }
+
     //Obtener los productos con una cantidad disponible mayor o igual a 10
     public List<Producto> obetenrProductosMayora10() {
         List<Producto> resultado = new ArrayList<>();
@@ -112,6 +113,7 @@ public class Tienda {
         }
         return resultado;
     }
+
     //2. Obtener los productos agotados
     public ArrayList<String> obtenerCodigosProductosAgotados2(int limiteInferior, int limiteSuperior) {
         ArrayList<String> resultado = new ArrayList<>();
@@ -122,18 +124,19 @@ public class Tienda {
         }
         return resultado;
     }
+
     // Obtener clientes que compraron el 07 de octubre
     public ArrayList<Cliente> obtenerClientesCompras() {
         ArrayList<Cliente> listaClientes = new ArrayList<>();
         LocalDate fechaBuscada = LocalDate.of(2026, 10, 7);
-        for (Factura aux: listaFacturas) {
+        for (Factura aux : listaFacturas) {
             if (aux.fecha().isEqual(fechaBuscada)) {
                 listaClientes.add(aux.cliente());
             }
         }
         return listaClientes;
     }
-    // Profe, me acabo de dar cuenta que hice solo un push para los puntos 1,2 y 3. Tuve que lidiar mucho con el desktop y despues la super embarre con eso
+
     //4. Obtern las facturas que tenga un cliente donde su nombre empiece con R
     public ArrayList<Factura> obtenerFacturasClienteConR() {
         ArrayList<Factura> resultado = new ArrayList<>();
@@ -144,6 +147,17 @@ public class Tienda {
             }
         }
 
+        return resultado;
+    }
+
+    //5. Ontener las faturas donde se haya comprado  un celular de marca 16 pro max
+    public ArrayList<Factura> obtenerFacturasIphone16ProMax() {
+        ArrayList<Factura> resultado = new ArrayList<>();
+        for (Factura aux : listaFacturas) {
+            if (aux.tieneProductoIphone16ProMax()){
+                resultado.add(aux);
+            }
+        }
         return resultado;
     }
 
