@@ -154,23 +154,34 @@ public class Tienda {
     public ArrayList<Factura> obtenerFacturasIphone16ProMax() {
         ArrayList<Factura> resultado = new ArrayList<>();
         for (Factura aux : listaFacturas) {
-            if (aux.tieneProductoIphone16ProMax()){
-                resultado.add(aux);
-            }
-        }
-        return resultado;
-    }
-    //6. Ontener las faturas que tengan un cliente Juan y donde se haya comprado  un celular de marca 16 pro max
-    public ArrayList<Factura> obtenerFacturasJuanYIphone16ProMax() {
-        ArrayList<Factura> resultado = new ArrayList<>();
-        for (Factura aux : listaFacturas) {
-            if (aux.tieneProductoIphone16ProMax() && aux.tieneClienteJuan()){
+            if (aux.tieneProductoIphone16ProMax()) {
                 resultado.add(aux);
             }
         }
         return resultado;
     }
 
+    //6. Ontener las faturas que tengan un cliente Juan y donde se haya comprado  un celular de marca 16 pro max
+    public ArrayList<Factura> obtenerFacturasJuanYIphone16ProMax() {
+        ArrayList<Factura> resultado = new ArrayList<>();
+        for (Factura aux : listaFacturas) {
+            if (aux.tieneProductoIphone16ProMax() && aux.tieneClienteJuan()) {
+                resultado.add(aux);
+            }
+        }
+        return resultado;
+    }
+
+    //7. implementar un metodo que reciba una categoria y retone todos los productos registrados que pertenezcan a ella
+    public ArrayList<Producto> obtenerProductosCategoriaBuscada(Categoria categoriaBuscada) {
+        ArrayList<Producto> resultado = new ArrayList<>();
+        for (Producto aux : listaProductos.values()) {
+            if (aux.tieneCatgoriaBuscada(categoriaBuscada)) {
+                resultado.add(aux);
+            }
+        }
+        return resultado;
+    }
 }
 
 
