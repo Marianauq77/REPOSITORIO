@@ -44,5 +44,12 @@ public record Factura(String codigo, LocalDate fecha, double total,
         }
         return false;
     }
+    public boolean tieneClienteJuan() {
+
+        boolean resultado = false;
+        resultado = cliente.verificarNombreJuan();
+        return resultado;
+
+    }
 }
 

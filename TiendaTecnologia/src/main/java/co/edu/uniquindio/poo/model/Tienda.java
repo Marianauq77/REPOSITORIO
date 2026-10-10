@@ -160,6 +160,16 @@ public class Tienda {
         }
         return resultado;
     }
+    //6. Ontener las faturas que tengan un cliente Juan y donde se haya comprado  un celular de marca 16 pro max
+    public ArrayList<Factura> obtenerFacturasJuanYIphone16ProMax() {
+        ArrayList<Factura> resultado = new ArrayList<>();
+        for (Factura aux : listaFacturas) {
+            if (aux.tieneProductoIphone16ProMax() && aux.tieneClienteJuan()){
+                resultado.add(aux);
+            }
+        }
+        return resultado;
+    }
 
 }
 
