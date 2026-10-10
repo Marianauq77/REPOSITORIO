@@ -182,6 +182,16 @@ public class Tienda {
         }
         return resultado;
     }
+    //8. Implementar un metodo que reciba un precio minimo y un precio maximo y que retorne los productos que se encuentren en ese rango
+    public ArrayList<Producto> obtenerProductosRangoBuscado(double precioMin, double precioMax) {
+        ArrayList<Producto> resultado = new ArrayList<>();
+        for (Producto aux : listaProductos.values()) {
+            if (aux.estaEnElRango(precioMin, precioMax)) {
+                resultado.add(aux);
+            }
+        }
+        return resultado;
+    }
 }
 
 

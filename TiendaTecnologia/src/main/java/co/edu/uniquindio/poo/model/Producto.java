@@ -49,4 +49,10 @@ public class Producto {
     public boolean tieneCatgoriaBuscada(Categoria categoriaBuscada){
         return categoria==categoriaBuscada;
     }
+    public boolean estaEnElRango(double precioMin, double precioMax) {
+        if (valor>= precioMin && valor<=precioMax) {
+            return true;
+        }
+        return false;
+    }
 }
