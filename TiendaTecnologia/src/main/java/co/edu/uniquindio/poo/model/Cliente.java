@@ -62,6 +62,9 @@ public class Cliente {
     public boolean verificarNombreJuan() {
         return nombreCompleto.toLowerCase().contains("juan"); // Se usa el contains por si lleva apellido o segundo nombre
     }
+    public boolean resideEnCiudadBuscada(String ciudadBuscada){
+        return ciudadResidencia.equalsIgnoreCase(ciudadBuscada);
+    }
 
 }
 

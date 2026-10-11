@@ -222,7 +222,25 @@ public class Tienda {
             return listaProductos.values().stream().max(Comparator.comparingDouble(Producto::getValor)); //El max obtiene el valor mas alto de la compracion de valores
         }
     }
+    //11. Implementar un metodo que reciba el nombre de una ciudad y retorne todos los clientes que residan en ella
+    //la busqueda debe realizarse sin diferenciar entre mayusculas o minusculas
+    public ArrayList<Cliente> obtenerClientesCiudadResidencia(String ciudadBuscada) {
+        ArrayList<Cliente> resultado = new ArrayList<>();
+        for (Cliente aux : listaClientes) {
+            if (aux.resideEnCiudadBuscada(ciudadBuscada)) {
+                resultado.add(aux);
+            }
+        }
+        return resultado;
+    }
+    // Tambien se puede hacer con stram
+    public ArrayList<Cliente> obtenerClientesCiudadResidencia2(String ciudadBuscada) {
+        return listaClientes.stream().filter(cliente-> cliente.getCiudadResidencia().equalsIgnoreCase(ciudadBuscada))
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
 }
+
 
 
 
