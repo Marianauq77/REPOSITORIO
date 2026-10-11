@@ -213,6 +213,15 @@ public class Tienda {
         return listaProductos.values().stream().sorted(Comparator.comparingDouble(Producto::getValor)) // el sorted ordena los productos comparando el valor devuelto por getValor() de menor a mayor.
                 .collect(Collectors.toCollection(ArrayList::new));
     }
+    //10. Implementar un metodo que identique el producto con el precio mas alto de la tienda, si no exiten productos registrados
+    // el metodo debe devolver un optional vacio
+    public Optional<Producto> encontrarProductoPrecioMasAlto() {
+        if (listaProductos.isEmpty()) {
+            return Optional.empty();
+        } else {
+            return listaProductos.values().stream().max(Comparator.comparingDouble(Producto::getValor)); //El max obtiene el valor mas alto de la compracion de valores
+        }
+    }
 }
 
 
