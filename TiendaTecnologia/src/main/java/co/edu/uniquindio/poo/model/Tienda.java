@@ -2,6 +2,7 @@ package co.edu.uniquindio.poo.model;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Tienda {
     private final String nombre;
@@ -191,6 +192,26 @@ public class Tienda {
             }
         }
         return resultado;
+    }
+    //9. Implementar un metodo que retorne los productos registrados en la tienda ordenados de menor a mayor
+    public ArrayList<Producto> obtenerListaProductosEnOrden() { // es como el metodo burbuja
+        ArrayList<Producto> listaProductosNueva = new ArrayList<>(listaProductos.values());
+        for (int i=0; i<listaProductosNueva.size()-1; i++) {
+            for(int j=i+1; j<listaProductosNueva.size();j++) {
+                if (listaProductosNueva.get(i).getValor()>listaProductosNueva.get(j).getValor()) {
+                    Producto temp=listaProductosNueva.get(j);
+                    listaProductosNueva.set(j,listaProductosNueva.get(i));
+                    listaProductosNueva.set(i,temp);
+
+                }
+            }
+        }
+        return listaProductosNueva;
+    }
+    //El punto 9 se puede hacer tambien de forma declarativa mas simple:
+    public ArrayList<Producto> obtenerListaProductosEnOrden2() {
+        return listaProductos.values().stream().sorted(Comparator.comparingDouble(Producto::getValor)) // el sorted ordena los productos comparando el valor devuelto por getValor() de menor a mayor.
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 }
 
