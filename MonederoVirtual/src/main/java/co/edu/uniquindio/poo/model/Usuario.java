@@ -1,9 +1,8 @@
 package co.edu.uniquindio.poo.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
-public class Cliente {
+public class Usuario {
     private final String documentoIdentidad;
     private final String nombreCompleto;
     private String telefono;
@@ -12,7 +11,7 @@ public class Cliente {
     private String contrasenia;
     ArrayList<Monedero> listaMonederos;
     ArrayList<Notificacion> listaNotificaciones;
-    public Cliente(String documentoIdentidad, String nombreCompleto, String telefono, String correo, String contrasenia) {
+    public Usuario(String documentoIdentidad, String nombreCompleto, String telefono, String correo, String contrasenia) {
         this.documentoIdentidad = documentoIdentidad;
         this.nombreCompleto = nombreCompleto;
         this.telefono = telefono;
@@ -69,7 +68,7 @@ public class Cliente {
     public void setListaNotificaciones(ArrayList<Notificacion> listaNotificaciones) {
         this.listaNotificaciones = listaNotificaciones;
     }
-    public boolean verificarContraseña(String contraseña){
-        return contraseña.equals(this.contraseña);
+    public boolean verificarContraseña(String contrasenia){
+        return contrasenia.equals(this.contrasenia);
     }
 }

@@ -1,21 +1,20 @@
 package co.edu.uniquindio.poo.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Optional;
 
-public class SistemaMonedero {
+public class MonederoVirtual {
     private final String nombre;
     private final String nit;
     private ArrayList <Monedero> listaMonederos;
-    private ArrayList <Cliente> listaClientes;
+    private ArrayList <Usuario> listaUsuarios;
     private ArrayList <Beneficio> listaBeneficios;
 
-    public SistemaMonedero(String nombre, String nit) {
+    public MonederoVirtual(String nombre, String nit) {
         this.nombre = nombre;
         this.nit=nit;
         this.listaMonederos = new ArrayList<>();
-        this.listaClientes = new ArrayList<>();
+        this.listaUsuarios = new ArrayList<>();
         this.listaBeneficios = new ArrayList<>();
     }
 
@@ -23,23 +22,23 @@ public class SistemaMonedero {
         return nombre;
     }
 
-    public ArrayList<Cliente> getListaClientes() {
-        return listaClientes;
+    public ArrayList<Usuario> getListaClientes() {
+        return listaUsuarios;
     }
 
-    public void setListaClientes(ArrayList<Cliente> listaClientes) {
-        this.listaClientes = listaClientes;
+    public void setListaClientes(ArrayList<Usuario> listaUsuarios) {
+        this.listaUsuarios = listaUsuarios;
     }
-    //CRUD CLIENTE
-    public String crearCliente(Cliente cliente){
-        if(buscarClienteDocumentoIdentidad(cliente.getDocumentoIdentidad()).isEmpty()){
-            listaClientes.add(cliente);
+    //CRUD USUARIO
+    public String crearUsuario(Usuario usuario){
+        if(buscarUsuarioDocumentoIdentidad(usuario.getDocumentoIdentidad()).isEmpty()){
+            listaUsuarios.add(usuario);
             return "Cliente registrado con exito";
         }
         return  "Ya hay un cliente con esa información, por favor verifique el documento de identidad";
     }
-    public Optional<Cliente> buscarClienteDocumentoIdentidad(String documentoIdentidad){
-        return listaClientes.stream().filter(cliente ->documentoIdentidad.equals(cliente.getDocumentoIdentidad())).findFirst();
+    public Optional<Usuario> buscarUsuarioDocumentoIdentidad(String documentoIdentidad){
+        return listaUsuarios.stream().filter(usuario ->documentoIdentidad.equals(usuario.getDocumentoIdentidad())).findFirst();
     }
     //CRUD BENEFICIO
     public void crearBeneficios(Beneficio beneficio100, Beneficio beneficio500, Beneficio beneficio1000){
