@@ -8,7 +8,7 @@ public class NotificacionCorreo extends Notificacion {
     }
 
     @Override
-    public void aplicar() {
+    public void enviar() {
 
     }
 }

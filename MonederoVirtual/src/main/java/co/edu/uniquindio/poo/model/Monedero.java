@@ -8,6 +8,7 @@ public class Monedero {
     private final String nombre;
     private double saldo;
     private final TipoMonedero tipoMonedero;
+    private short puntosAcumulados;
     private ArrayList<Transaccion> listaTransacciones;
     private ArrayList<TransaccionProgramada> listaTransaccionesProgramadas;
 
@@ -19,6 +20,18 @@ public class Monedero {
         this.listaTransacciones=new ArrayList<>();
         this.listaTransaccionesProgramadas=new ArrayList<>();
 
+    }
+
+    public short getPuntosAcumulados() {
+        return puntosAcumulados;
+    }
+
+    public void setPuntosAcumulados(short puntosAcumulados) {
+        this.puntosAcumulados = puntosAcumulados;
+    }
+
+    public TipoMonedero getTipoMonedero() {
+        return tipoMonedero;
     }
 
     public String getCodigo() {
@@ -42,7 +55,7 @@ public class Monedero {
     }
 
     public ArrayList<Transaccion> getListaTransacciones() {
-        return Collections.unmodifiableList(listaTransacciones);
+        return listaTransacciones;
     }
 
     public void setListaTransacciones(ArrayList<Transaccion> listaTransacciones) {
@@ -50,7 +63,7 @@ public class Monedero {
     }
 
     public ArrayList<TransaccionProgramada> getListaTransaccionesProgramadas() {
-        return Collections.unmodifiableList(listaTransaccionesProgramadas);
+        return listaTransaccionesProgramadas;
     }
 
     public void setListaTransaccionesProgramadas(ArrayList<TransaccionProgramada> listaTransaccionesProgramadas) {

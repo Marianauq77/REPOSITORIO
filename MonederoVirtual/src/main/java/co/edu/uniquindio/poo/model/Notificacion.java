@@ -34,5 +34,5 @@ public  abstract class Notificacion {
     public void setDestinatario(String destinatario) {
         this.destinatario = destinatario;
     }
-    public abstract void aplicar();
+    public abstract void enviar();
 }

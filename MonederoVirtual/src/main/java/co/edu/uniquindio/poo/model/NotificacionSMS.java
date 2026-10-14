@@ -7,7 +7,7 @@ public class NotificacionSMS extends Notificacion  {
             super(mensaje, fecha, tipo, destinatario); // invova el contructor
         }
     @Override
-    public void aplicar() {
+    public void enviar() {
 
     }
 }

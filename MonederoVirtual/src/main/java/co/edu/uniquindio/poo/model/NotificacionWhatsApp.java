@@ -8,6 +8,6 @@ public class NotificacionWhatsApp extends Notificacion {
     }
 
     @Override
-    public void aplicar() {
+    public void enviar() {
     }
 }

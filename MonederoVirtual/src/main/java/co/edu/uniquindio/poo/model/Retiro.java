@@ -15,4 +15,9 @@ public class Retiro extends Transaccion{
     public int calcularPuntos() {
         return 0;
     }
+
+    @Override
+    public void determinarAtipica() {
+
+    }
 }

@@ -8,17 +8,16 @@ public class Cliente {
     private final String nombreCompleto;
     private String telefono;
     private String correo;
-    private int puntosAcumulados;
     private Rango rango;
-    private String contraseña;
+    private String contrasenia;
     ArrayList<Monedero> listaMonederos;
     ArrayList<Notificacion> listaNotificaciones;
-    public Cliente(String documentoIdentidad, String nombreCompleto, String telefono, String correo, String contraseña) {
+    public Cliente(String documentoIdentidad, String nombreCompleto, String telefono, String correo, String contrasenia) {
         this.documentoIdentidad = documentoIdentidad;
         this.nombreCompleto = nombreCompleto;
         this.telefono = telefono;
         this.correo = correo;
-        this.contraseña=contraseña;
+        this.contrasenia=contrasenia;
         this.listaMonederos=new ArrayList<>();
         this.listaNotificaciones=new ArrayList<>();
     }
@@ -47,14 +46,6 @@ public class Cliente {
         this.correo = correo;
     }
 
-    public int getPuntosAcumulados() {
-        return puntosAcumulados;
-    }
-
-    public void setPuntosAcumulados(int puntosAcumulados) {
-        this.puntosAcumulados = puntosAcumulados;
-    }
-
     public Rango getRango() {
         return rango;
     }
@@ -64,7 +55,7 @@ public class Cliente {
     }
 
     public ArrayList<Monedero> getListaMonederos() {
-        return Collections.unmodifiableList(listaMonederos);
+        return listaMonederos;
     }
 
     public void setListaMonederos(ArrayList<Monedero> listaMonederos) {
@@ -72,7 +63,7 @@ public class Cliente {
     }
 
     public ArrayList<Notificacion> getListaNotificaciones() {
-        return Collections.unmodifiableList(listaNotificaciones);
+        return listaNotificaciones;
     }
 
     public void setListaNotificaciones(ArrayList<Notificacion> listaNotificaciones) {

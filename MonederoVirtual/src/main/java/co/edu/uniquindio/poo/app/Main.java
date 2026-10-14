@@ -1,16 +1,14 @@
 package co.edu.uniquindio.poo.app;
 
 
-import co.edu.uniquindio.poo.model.Beneficio;
-import co.edu.uniquindio.poo.model.Cliente;
-import co.edu.uniquindio.poo.model.SistemaMonedero;
+import co.edu.uniquindio.poo.model.*;
 
 import javax.swing.*;
 import java.util.Optional;
 
 public class Main {
     static void main() {
-        SistemaMonedero sistemaMonedero= new SistemaMonedero("MonederoVirtual");
+        SistemaMonedero sistemaMonedero= new SistemaMonedero("MonederoVirtual", "LGJDN04850Ñ");
         Beneficio beneficio100= new Beneficio("Beneficio100", (int)100, "Reducción del 10% en la comision por tranferencias");
         Beneficio beneficio500= new Beneficio("Beneficio500", (int)500, "Un mes sin cargos por retiro");
         Beneficio beneficio1000= new Beneficio("Beneficio1000", (int)1000, "Bono de saldo de 50 unidaddes en el monedero");
@@ -33,7 +31,7 @@ public class Main {
                         Cliente cliente=clienteEncontrado.get();
                         int intentos=0;
                         while (intentos < 3 && clienteActual == null) {
-                            String contraseña = JOptionPane.showInputDialog(null, "Ingrese su contraseña");
+                            String contraseña = JOptionPane.showInputDialog(null, "Ingrese su contraseña:");
                             if(cliente.verificarContraseña(contraseña)){
                                 clienteActual= cliente;
                                 break;
@@ -43,7 +41,11 @@ public class Main {
                                         "Contraseña incorrecta. Intentos restantes: " + (3 - intentos));
                             }
                         }
+                    }else{
+                        JOptionPane.showMessageDialog(null,
+                                "No se encontro un cliente con ese nombre: ");
                     }
+                    break;
 
                 case 2:
                     String documentoIdentidad2 = JOptionPane.showInputDialog(null, "Ingrese su documento de Indentidad");
@@ -54,6 +56,14 @@ public class Main {
                     Cliente cliente= new Cliente(documentoIdentidad2, nombreCompleto2,telefono2, correo2, contraseña);
                     String resultado=sistemaMonedero.crearCliente(cliente);
                     JOptionPane.showMessageDialog(null,resultado);
+                    while(clienteActual==null){
+                        String codigo = JOptionPane.showInputDialog(null, "Ingrese un codigo para su monedero:");
+                        if(!sistemaMonedero.verificarCodigoMonederoExiste(codigo)){
+                            Monedero monedero=new Monedero(codigo, "PRINCIPAL",TipoMonedero.GASTOS_DIARIOS, (double) 0);
+                        }else{
+
+                        }
+                    }
                     break;
 
                 default:

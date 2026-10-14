@@ -6,12 +6,14 @@ import java.util.Optional;
 
 public class SistemaMonedero {
     private final String nombre;
+    private final String nit;
     private ArrayList <Monedero> listaMonederos;
     private ArrayList <Cliente> listaClientes;
     private ArrayList <Beneficio> listaBeneficios;
 
-    public SistemaMonedero(String nombre) {
+    public SistemaMonedero(String nombre, String nit) {
         this.nombre = nombre;
+        this.nit=nit;
         this.listaMonederos = new ArrayList<>();
         this.listaClientes = new ArrayList<>();
         this.listaBeneficios = new ArrayList<>();
@@ -22,7 +24,7 @@ public class SistemaMonedero {
     }
 
     public ArrayList<Cliente> getListaClientes() {
-        return Collections.unmodifiableList(listaClientes);
+        return listaClientes;
     }
 
     public void setListaClientes(ArrayList<Cliente> listaClientes) {
@@ -44,5 +46,13 @@ public class SistemaMonedero {
         listaBeneficios.add(beneficio100);
         listaBeneficios.add(beneficio500);
         listaBeneficios.add(beneficio1000);
+    }
+    public boolean verificarCodigoMonederoExiste(String codigo){
+        for(Monedero aux: listaMonederos){
+            if(codigo.equals(aux.getCodigo())){
+                return true;
+            }
+        }
+        return false;
     }
 }
