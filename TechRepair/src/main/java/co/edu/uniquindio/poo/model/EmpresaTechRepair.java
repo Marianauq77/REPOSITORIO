@@ -1,20 +1,20 @@
 package co.edu.uniquindio.poo.model;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
-public class TechRepair {
+public class EmpresaTechRepair {
     private final String nombreEmpresa;
     private final String nit;
     private final String telefono;
     private final String direccion;
-    private final ArrayList<Cliente> clientes = new ArrayList<>();
+    private final ArrayList<Cliente> listaClientes = new ArrayList<>();
+    private final ArrayList<Equipo> listaEquipos = new ArrayList<>();
     private final ArrayList<Tecnico> tecnicos = new ArrayList<>();
     private final ArrayList<OrdenServicio> ordenes = new ArrayList<>();
     private final ArrayList<Servicio> listaServicios = new ArrayList<>();
 
-    public TechRepair(String nombreEmpresa, String nit, String telefono, String direccion) {
+    public EmpresaTechRepair(String nombreEmpresa, String nit, String telefono, String direccion) {
         this.nombreEmpresa = nombreEmpresa;
         this.nit = nit;
         this.telefono = telefono;
@@ -34,7 +34,7 @@ public class TechRepair {
     }
 
     public ArrayList<Cliente> getClientes() {
-        return clientes;
+        return listaClientes;
     }
 
     public ArrayList<Tecnico> getTecnicos() {
@@ -47,14 +47,19 @@ public class TechRepair {
 
     //CRUDS
     public String registrarCliente(Cliente cliente) {
-        return "";
+        Optional<Cliente>clienteEncontrado=buscarClientePorDocumento(cliente.getDocumento());
+        if(clienteEncontrado.isEmpty()){
+            listaClientes.add(cliente);
+            return "El cliente ha sido registrado exitosamente";
+        }
+        return "No se pudo registrar, ya existe un cliente con esa informacion";
     }
 
     public Optional <Cliente> buscarClientePorDocumento(String documento) {
-        return null;
+         return listaClientes.stream().filter(c-> documento.equals(c.getDocumento())).findFirst();
     }
-    public String registrarEquipo(String documento, Equipo equipo) {
-        //tambien se añade al cliente
+    public String registrarEquipo(Cliente cliente, Equipo equipo) {
+        listaEquipos.add()
         return "";
     }
     public Optional <Equipo> buscarEquipoPorCodigo(String codigo) {

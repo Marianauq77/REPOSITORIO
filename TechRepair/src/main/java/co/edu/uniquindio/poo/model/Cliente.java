@@ -9,16 +9,16 @@ public class Cliente {
     private String telefono;
     private final String correo;
     private String direccion;
-    private ArrayList<Equipo> listaequipos= new ArrayList<>();
-    private final TechRepair ownedByTechRepair;
+    private final ArrayList<Equipo> listaEquipos= new ArrayList<>();
+    private final EmpresaTechRepair ownedByEmpresaTechRepair;
 
-    public Cliente(String documento, String nombreCompleto, String correo, TechRepair ownedByTechRepair,  String direccion, String telefono) {
+    public Cliente(String documento, String nombreCompleto, String telefono, String correo, String direccion, EmpresaTechRepair ownedByEmpresaTechRepair) {
         this.documento = documento;
         this.nombreCompleto = nombreCompleto;
-        this.correo = correo;
-        this.ownedByTechRepair = ownedByTechRepair;
-        this.direccion = direccion;
         this.telefono = telefono;
+        this.correo = correo;
+        this.direccion = direccion;
+        this.ownedByEmpresaTechRepair = ownedByEmpresaTechRepair;
     }
 
     public String getDocumento() {
@@ -50,12 +50,9 @@ public class Cliente {
     }
 
     public ArrayList<Equipo> getEquipos() {
-        return equipos;
+        return listaEquipos;
     }
 
-    public void setEquipos(ArrayList<Equipo> equipos) {
-        this.equipos = equipos;
-    }
     //CRUDS
     public String registrarEquipo(Equipo equipo) {
         return "";

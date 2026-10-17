@@ -7,15 +7,15 @@ public class DetalleServicio {
     private final Tecnico tecnicoAsignado;
     private final String observaciones;
     private EstadoIntervencion estadoIntervencion;
-    private final TechRepair ownedByTechRepair;
+    private final EmpresaTechRepair ownedByEmpresaTechRepair;
 
-    public DetalleServicio(String codigo, Equipo equipo, Servicio servicio, Tecnico tecnicoAsignado, String observaciones, TechRepair ownedByTechRepair, EstadoIntervencion estado) {
+    public DetalleServicio(String codigo, Equipo equipo, Servicio servicio, Tecnico tecnicoAsignado, String observaciones, EmpresaTechRepair ownedByEmpresaTechRepair, EstadoIntervencion estado) {
         this.codigo = codigo;
         this.equipo = equipo;
         this.servicio = servicio;
         this.tecnicoAsignado = tecnicoAsignado;
         this.observaciones = observaciones;
-        this.ownedByTechRepair = ownedByTechRepair;
+        this.ownedByEmpresaTechRepair = ownedByEmpresaTechRepair;
         this.estadoIntervencion = estado;
     }
 

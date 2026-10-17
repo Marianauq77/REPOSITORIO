@@ -5,10 +5,10 @@ public abstract class Servicio {
     protected String nombre;
     protected String descripcion;
     protected float tarifaBase;
-    private final TechRepair ownedByTechRepair;
+    private final EmpresaTechRepair ownedByEmpresaTechRepair;
 
-    public Servicio(TechRepair ownedByTechRepair, float tarifaBase, String descripcion, String nombre, String codigo) {
-        this.ownedByTechRepair = ownedByTechRepair;
+    public Servicio(EmpresaTechRepair ownedByEmpresaTechRepair, float tarifaBase, String descripcion, String nombre, String codigo) {
+        this.ownedByEmpresaTechRepair = ownedByEmpresaTechRepair;
         this.tarifaBase = tarifaBase;
         this.descripcion = descripcion;
         this.nombre = nombre;

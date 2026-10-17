@@ -7,13 +7,13 @@ public class Repuesto {
     private double precioUnitario;
     private int cantidadDisponible;
     private CategoriaCompatibilidad categoria;
-    private final TechRepair ownedByTechRepair;
+    private final EmpresaTechRepair ownedByEmpresaTechRepair;
 
-    public Repuesto(String codigo, String nombre, String descripcion, TechRepair ownedByTechRepair, CategoriaCompatibilidad categoria, int cantidadDisponible, double precioUnitario) {
+    public Repuesto(String codigo, String nombre, String descripcion, EmpresaTechRepair ownedByEmpresaTechRepair, CategoriaCompatibilidad categoria, int cantidadDisponible, double precioUnitario) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.ownedByTechRepair = ownedByTechRepair;
+        this.ownedByEmpresaTechRepair = ownedByEmpresaTechRepair;
         this.categoria = categoria;
         this.cantidadDisponible = cantidadDisponible;
         this.precioUnitario = precioUnitario;

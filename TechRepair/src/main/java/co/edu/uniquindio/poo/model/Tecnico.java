@@ -6,15 +6,15 @@ public class Tecnico {
     private final String documento;
     private Especialidad especialidad;
     private EstadoLaboral estadoLaboral;
-    private final TechRepair ownedByTechRepair;
+    private final EmpresaTechRepair ownedByEmpresaTechRepair;
 
-    public Tecnico(String codigo, String nombre, String documento, Especialidad especialidad, EstadoLaboral estadoLaboral, TechRepair ownedByTechRepair) {
+    public Tecnico(String codigo, String nombre, String documento, Especialidad especialidad, EstadoLaboral estadoLaboral, EmpresaTechRepair ownedByEmpresaTechRepair) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.documento = documento;
         this.especialidad = especialidad;
         this.estadoLaboral = estadoLaboral;
-        this.ownedByTechRepair = ownedByTechRepair;
+        this.ownedByEmpresaTechRepair = ownedByEmpresaTechRepair;
     }
 
     public String getCodigo() {
