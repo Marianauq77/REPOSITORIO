@@ -1,6 +1,7 @@
 package co.edu.uniquindio.poo.model;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Optional;
 
 public class EmpresaTechRepair {
@@ -10,7 +11,7 @@ public class EmpresaTechRepair {
     private final String direccion;
     private final ArrayList<Cliente> listaClientes = new ArrayList<>();
     private final ArrayList<Equipo> listaEquipos = new ArrayList<>();
-    private final ArrayList<Tecnico> tecnicos = new ArrayList<>();
+    private final ArrayList<Tecnico> listaTecnicos = new ArrayList<>();
     private final ArrayList<OrdenServicio> ordenes = new ArrayList<>();
     private final ArrayList<Servicio> listaServicios = new ArrayList<>();
 
@@ -59,18 +60,28 @@ public class EmpresaTechRepair {
          return listaClientes.stream().filter(c-> documento.equals(c.getDocumento())).findFirst();
     }
     public String registrarEquipo(Cliente cliente, Equipo equipo) {
-        listaEquipos.add()
-        return "";
+        Optional <Equipo> equipoEncontrado=buscarEquipoPorCodigo(equipo.getCodigo());
+        if(equipoEncontrado.isEmpty()) {
+            listaEquipos.add(equipo);
+            cliente.registrarEquipo(equipo);
+            return "Equipo registrado y asociado al cliente exitosamente";
+        }
+        return "Ya existe un equipo con esa información";
     }
     public Optional <Equipo> buscarEquipoPorCodigo(String codigo) {
-        return null;
+        return listaEquipos.stream().filter(e -> codigo.equals(e.getCodigo())).findFirst();
     }
 
-    public String registrarTecnico(Tecnico tecnico) {
-        return "";
+    public String registrarTecnico (Tecnico tecnico) {
+        Optional <Tecnico> tecnicoEncontrado=buscarTecnicoPorDocumento(tecnico.getDocumento());
+        if(tecnicoEncontrado.isEmpty()) {
+            listaTecnicos.add(tecnico);
+            return "El tecnico fue registrado exitosamente";
+        }
+        return "Ya existe un tecnico con esa informacion";
     }
     public Optional <Tecnico> buscarTecnicoPorDocumento(String documento) {
-        return null;
+        return listaTecnicos.stream().filter(t-> documento.equals(t.getDocumento())).findFirst();
     }
 
     public String generarOrdenServicio(String documentoCliente, OrdenServicio ordenservicio) {
@@ -81,6 +92,10 @@ public class EmpresaTechRepair {
     public String  agregarDetalleAOrden(String codigoOrden, DetalleServicio detalle) {
         //Busca el orden servicio y si lo encuentra le mete el detalle para que ella lo agregue (ya esta el metodo en la orden)
         return "";
+    }
+    public Optional<Tecnico> buscarTecnicoAutorizado (Especialidad especialidadRequerida){
+        return listaTecnicos.stream().filter(t -> t.estaAutorizado(especialidadRequerida)).min(Comparator.comparingInt(Tecnico::cantidadDetallesSignados));
+        //Primero filtra los que esten autorizados y asigna el que menos detalles asigandos tiene
     }
 
     public Optional<OrdenServicio> buscarOrdenPorCodigo(String codigoOrden) {

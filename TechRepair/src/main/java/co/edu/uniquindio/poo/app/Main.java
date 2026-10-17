@@ -41,6 +41,7 @@ public class Main {
                     registrarEquipo(empresaTechRepair);
                     break;
                 case 3:
+                    registrarTecnico(empresaTechRepair);
                     break;
                 case 4:
                     break;
@@ -101,8 +102,10 @@ public class Main {
             String modelo = JOptionPane.showInputDialog("Ingrese el modelo:");
             String añoFabricacion = JOptionPane.showInputDialog("Ingrese el año de fabricación:");
             String descripcionEstadoFisico = JOptionPane.showInputDialog("Describa el estado físico del equipo:");
-            String ingresoTipoEquipo = JOptionPane.showInputDialog("Ingrese el tipo de equipo que desea registrar," +
-                    " si el equipo esta compuesto de dos o mas palabras utilize un gion bajo _ por cada separacion :");
+            String ingresoTipoEquipo = JOptionPane.showInputDialog("Ingrese el tipo de equipo que desea registrar:\n" +
+                                                                   "COMPUTADOR_PORTATIL\n" +
+                                                                   "COMPUTADOR_ESCRITORIO\n" +
+                                                                   "TELEFONO_INTELIGENTE:");
             TipoEquipo tipoEquipo = TipoEquipo.valueOf(ingresoTipoEquipo.toUpperCase());
             if (tipoEquipo == TipoEquipo.COMPUTADOR_PORTATIL) {
                 float pantallaPulgadas = Float.parseFloat(JOptionPane.showInputDialog("Ingrese el tamaño de pantalla en pulgadas:"));
@@ -114,7 +117,7 @@ public class Main {
                 String resultado = empresaTechRepair.registrarEquipo(cliente, nuevoEquipo);
                 JOptionPane.showMessageDialog(null, resultado);
             }
-            if (tipoEquipo == TipoEquipo.COMPUTADOR_ESCRITORIO) {
+            else if (tipoEquipo == TipoEquipo.COMPUTADOR_ESCRITORIO) {
                 String procesador = JOptionPane.showInputDialog("Ingrese el tipo de procesador:");
                 int ramGB = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la capacidad de RAM en GB:"));
                 int almacenamientoGB = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la capacidad de almacenamiento en GB:"));
@@ -124,7 +127,7 @@ public class Main {
                 String resultado = empresaTechRepair.registrarEquipo(cliente, nuevoEquipo);
                 JOptionPane.showMessageDialog(null, resultado);
             }
-            if (tipoEquipo == TipoEquipo.TELEFONO_INTELIGENTE) {
+            else if   (tipoEquipo == TipoEquipo.TELEFONO_INTELIGENTE) {
                 String sistemaOperativo = JOptionPane.showInputDialog("Ingrese el sistema operativo:");
                 int almacenamientoGB = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la capacidad de almacenamiento en GB:"));
                 int bateriaMah = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la capacidad de la batería en mAh:"));
@@ -138,5 +141,22 @@ public class Main {
         }else{
             JOptionPane.showMessageDialog(null, "No hay ningun cliente registrado con ese documento");
         }
+    }
+    public static void registrarTecnico(EmpresaTechRepair empresaTechRepair){
+        String codigo = JOptionPane.showInputDialog("Ingrese el codigo del tecnico:");
+        String documento = JOptionPane.showInputDialog("Ingrese el docuemnto de identidad del tecnico:");
+        String nombreCompleto = JOptionPane.showInputDialog("Ingrese el nombre completo del tecnico:");
+        String ingresoEspecialidad = JOptionPane.showInputDialog("Ingrese la especialidad del tecnico:"+
+                                                                 "COMPUTADORES\n" +
+                                                                 "DISPOSITIVOS_MOVILES\n" +
+                                                                 "SOPORTE_GENERAL");
+        Especialidad especialidad= Especialidad.valueOf(ingresoEspecialidad);
+        String ingresoEstadoLaboral = JOptionPane.showInputDialog("Ingrese la especialidad del tecnico:"+
+                                                                  "ACTIVO\n" +
+                                                                  "INACTIVO");
+        EstadoLaboral estadoLaboral= EstadoLaboral.valueOf(ingresoEstadoLaboral);
+        Tecnico tecnicoNuevo = new Tecnico(codigo,documento, nombreCompleto, especialidad,estadoLaboral, empresaTechRepair);
+        String resultado = empresaTechRepair.registrarTecnico(tecnicoNuevo);
+        JOptionPane.showMessageDialog(null, resultado);
     }
 }

@@ -54,11 +54,8 @@ public class Cliente {
     }
 
     //CRUDS
-    public String registrarEquipo(Equipo equipo) {
-        return "";
-    }
-    public Optional<Equipo> buscarEquipo(String codigoEquipo) {
-        return null;
+    public void registrarEquipo(Equipo equipo) {
+            listaEquipos.add(equipo);
     }
     public void agregarOrden(){
 

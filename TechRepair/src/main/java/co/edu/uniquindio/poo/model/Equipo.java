@@ -16,4 +16,32 @@ public abstract class Equipo {
         this.añoFabricacion = añoFabricacion;
         this.descripcionEstadoFisico = descripcionEstadoFisico;
     }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public String getNumeroSerie() {
+        return numeroSerie;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public String getAñoFabricacion() {
+        return añoFabricacion;
+    }
+
+    public String getDescripcionEstadoFisico() {
+        return descripcionEstadoFisico;
+    }
+
+    public void setDescripcionEstadoFisico(String descripcionEstadoFisico) {
+        this.descripcionEstadoFisico = descripcionEstadoFisico;
+    }
 }
