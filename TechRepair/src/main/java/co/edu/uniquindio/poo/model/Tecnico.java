@@ -48,6 +48,9 @@ public class Tecnico {
         this.estadoLaboral = estadoLaboral;
     }
     public boolean estaAutorizado(Especialidad especialidadRequerida){
+        if(estadoLaboral== EstadoLaboral.INACTIVO){
+            return false;
+        }
         if(especialidad== especialidadRequerida || especialidad== Especialidad.SOPORTE_GENERAL){
             return true;
         }
