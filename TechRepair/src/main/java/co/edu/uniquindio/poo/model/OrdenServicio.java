@@ -39,11 +39,30 @@ public class OrdenServicio {
     public void setEstado(EstadoOrden estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "OrdenServicio{\n" +
+                "codigo='" + codigo + '\n' +
+                "fechaCreacion=" + fechaCreacion +"\n"+
+                "cliente=" + cliente.getNombreCompleto() +"\n"+
+                "estado=" + estado.name() +"\n"+
+                "total=" + this.calcularValorTotalOrden()+"\n"+
+                '}'+ "\n";
+    }
+    public String mostrarOrden (){
+        String mensaje= this.toString();
+        for(DetalleServicio d: listaDetalles){
+            mensaje+=d.toString()+ "\n";
+        }
+        return mensaje;
+    }
+
     public void agregarDetalle (DetalleServicio detalleServicio){
 
     }
-    public void calcularvalorTotalOrden(){
-
+    public String calcularValorTotalOrden(){
+        return "";
     }
     public void finalizar(){}
 

@@ -37,6 +37,6 @@ public class EmpresaEnvios {
         return listaEnvios.stream().filter(e -> codigo.equals(e.getCodigo())).findFirst();
     }
     public Optional <Envio> encontrarEnvioMasCaro(){
-        return  listaEnvios.stream().max(Comparator.comparing(Envio:: calcularCosto));
+        return  listaEnvios.stream().max(Comparator.comparing(Envio:: calcularCostoTotal));
     }
 }

@@ -8,7 +8,7 @@ public class Tecnico {
     private final String documento;
     private Especialidad especialidad;
     private EstadoLaboral estadoLaboral;
-    private ArrayList<DetalleServicio> listaDetallesAsigandos;
+    private ArrayList<DetalleServicio> listaDetallesAsignados;
     private final EmpresaTechRepair ownedByEmpresaTechRepair;
 
     public Tecnico(String codigo, String nombre, String documento, Especialidad especialidad, EstadoLaboral estadoLaboral, EmpresaTechRepair ownedByEmpresaTechRepair) {
@@ -47,24 +47,45 @@ public class Tecnico {
     public void setEstadoLaboral(EstadoLaboral estadoLaboral) {
         this.estadoLaboral = estadoLaboral;
     }
-    public boolean estaAutorizado(Especialidad especialidadRequerida){
-        if(estadoLaboral== EstadoLaboral.INACTIVO){
+
+    public boolean estaAutorizado(Especialidad especialidadRequerida) {
+        if (estadoLaboral == EstadoLaboral.INACTIVO) {
             return false;
         }
-        if(especialidad== especialidadRequerida || especialidad== Especialidad.SOPORTE_GENERAL){
+        if (especialidad == especialidadRequerida || especialidad == Especialidad.SOPORTE_GENERAL) {
             return true;
         }
         return false;
     }
-    public void agregarDetalleAsignado(DetalleServicio detalle){
-        listaDetallesAsigandos.add(detalle);
-    }
-    public int cantidadDetallesSignados(){
-        int cantDetalles=listaDetallesAsigandos.size(); //size guarda un int
-        return cantDetalles;
-    }
-    public String consultarTrabajos() {
-        return "";
+
+    public void agregarDetalleAsignado(DetalleServicio detalle) {
+        listaDetallesAsignados.add(detalle);
     }
 
+    public int cantidadDetallesSignados() {
+        int cantDetalles = listaDetallesAsignados.size(); //size guarda un int
+        return cantDetalles;
+    }
+
+    public String consultarTrabajos() {
+        if (listaDetallesAsignados.isEmpty()) {
+            return "El técnico no tiene trabajos asignados";
+        }
+        String pendientes = "";
+        String enProceso = "";
+        String finalizados = "";
+        for (DetalleServicio d : listaDetallesAsignados) {
+            if (d.getEstado() == EstadoIntervencion.PENDIENTE) {
+                pendientes+= d.toString() + "\n";
+            } else if (d.getEstado() == EstadoIntervencion.EN_PROCESO) {
+                enProceso+= d.toString() + "\n";
+            } else if (d.getEstado() == EstadoIntervencion.FINALIZADA) {
+                finalizados+= d.toString() + "\n";
+            }
+        }
+        return "Trabajos de " + this.getNombre() + ":\n" +
+                "PENDIENTES:\n" + pendientes + "\n" +
+                "EN PROCESO:\n" + enProceso + "\n" +
+                "FINALIZADOS:\n" + finalizados;
+    }
 }

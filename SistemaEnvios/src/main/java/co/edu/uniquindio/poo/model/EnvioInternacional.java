@@ -4,17 +4,18 @@ public class EnvioInternacional extends Envio {
     private String paisDestino;
     private boolean necesitaSeguro;
 
-    public EnvioInternacional(String codigo, String destinatario, float peso, String paisDestino, boolean necesitaSeguro) {
-        super(codigo, destinatario, peso);
+    public EnvioInternacional(String codigo, float peso, float incremento, float valorFijo, String destinatario, String paisDestino, boolean necesitaSeguro) {
+        super(codigo, peso, incremento, valorFijo, destinatario);
         this.paisDestino = paisDestino;
         this.necesitaSeguro = necesitaSeguro;
     }
 
     @Override
-    public float calcularCosto() {
+    public float calcularCostoTotal() {
+        float costo= calcularCostoFijo();
             if(necesitaSeguro) {
-                return 15000f + (9000f *peso)+2000f;
+                return costo+=20000f;
             }
-            return 15000f + (9000f *peso);
+            return costo;
         }
 }

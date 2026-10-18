@@ -46,38 +46,48 @@ public class Main {
     }
     public static void registrarEnvioNacional(EmpresaEnvios empresaEnvios) {
         String codigo = JOptionPane.showInputDialog("Ingrese el código del envío:");
-        String destinatario = JOptionPane.showInputDialog("Ingrese el nombre del destinatario:");
         float peso = Float.parseFloat(JOptionPane.showInputDialog("Ingrese el peso del envío (en kg):"));
+        float incremento = 2000; //Son valores fijos del enunciado establecidos por cada envio
+        float valorFijo =6000;
+        String destinatario = JOptionPane.showInputDialog("Ingrese el nombre del destinatario:");
         String ciudadDestino = JOptionPane.showInputDialog("Ingrese la ciudad de destino:");
 
         int respuestaDomicilio = JOptionPane.showConfirmDialog(null, "¿El envío incluye entrega a domicilio?");
         boolean entregaDomicilio = (respuestaDomicilio == JOptionPane.YES_OPTION);
 
-        Envio nuevoEnvio = new EnvioNacional(codigo, destinatario, peso, ciudadDestino, entregaDomicilio);
+        Envio nuevoEnvio = new EnvioNacional(codigo,peso, incremento, valorFijo,destinatario,ciudadDestino, entregaDomicilio);
         String resultado = empresaEnvios.registrarEnvio(nuevoEnvio);
         JOptionPane.showMessageDialog(null, resultado);
-        JOptionPane.showMessageDialog(null, "El costo  de el envio es:"+nuevoEnvio.calcularCosto() );
+        if (resultado.equals("Se registro exitosamente el envio")) {
+            JOptionPane.showMessageDialog(null, "El costo  de el envio es:" + nuevoEnvio.calcularCostoTotal());
+        }
     }
 
     public static void registrarEnvioInternacional(EmpresaEnvios empresaEnvios) {
         String codigo = JOptionPane.showInputDialog("Ingrese el código del envío:");
-        String destinatario = JOptionPane.showInputDialog("Ingrese el nombre del destinatario:");
         float peso = Float.parseFloat(JOptionPane.showInputDialog("Ingrese el peso del envío (en kg):"));
+        float incremento =9000;
+        float valorFijo =15000;
+        String destinatario = JOptionPane.showInputDialog("Ingrese el nombre del destinatario:");
         String paisDestino = JOptionPane.showInputDialog("Ingrese el país de destino:");
 
         int respuestaSeguro = JOptionPane.showConfirmDialog(null, "¿El envío requiere seguro internacional?");
         boolean necesitaSeguro = (respuestaSeguro == JOptionPane.YES_OPTION);
 
-        Envio nuevoEnvio = new EnvioInternacional(codigo, destinatario, peso, paisDestino, necesitaSeguro);
+        Envio nuevoEnvio = new EnvioInternacional(codigo, peso, incremento, valorFijo, destinatario, paisDestino, necesitaSeguro);
         String resultado = empresaEnvios.registrarEnvio(nuevoEnvio);
         JOptionPane.showMessageDialog(null, resultado);
-        JOptionPane.showMessageDialog(null, "El costo  de el envio es:"+nuevoEnvio.calcularCosto() );
+        if (resultado.equals("Se registro exitosamente el envio")) {
+            JOptionPane.showMessageDialog(null, "El costo  de el envio es:" + nuevoEnvio.calcularCostoTotal());
+        }
     }
 
     public static void registrarEnvioExpres(EmpresaEnvios empresaEnvios) {
         String codigo = JOptionPane.showInputDialog("Ingrese el código del envío:");
-        String destinatario = JOptionPane.showInputDialog("Ingrese el nombre del destinatario:");
         float peso = Float.parseFloat(JOptionPane.showInputDialog("Ingrese el peso del envío (en kg):"));
+        float incremento = 2000;
+        float valorFijo = 6000;
+        String destinatario = JOptionPane.showInputDialog("Ingrese el nombre del destinatario:");
         String ciudadDestino = JOptionPane.showInputDialog("Ingrese la ciudad de destino:");
 
         // Ajusta la clase y parámetros según tu implementación de EnvioExpress
@@ -85,10 +95,12 @@ public class Main {
         boolean entregaDomicilio = (respuestaDomicilio == JOptionPane.YES_OPTION);
         int cantidadHorasMaxima=Integer.parseInt(JOptionPane.showInputDialog("Ingrese ela cantidad de horas maxima para la entrega"));
 
-        Envio nuevoEnvio = new EnvioExpres(codigo, destinatario, peso, ciudadDestino, entregaDomicilio, cantidadHorasMaxima);
+        Envio nuevoEnvio = new EnvioExpres(codigo, peso, incremento, valorFijo, destinatario, ciudadDestino, entregaDomicilio, cantidadHorasMaxima);
         String resultado = empresaEnvios.registrarEnvio(nuevoEnvio);
         JOptionPane.showMessageDialog(null, resultado);
-        JOptionPane.showMessageDialog(null, "El costo  de el envio es:"+nuevoEnvio.calcularCosto() );
+        if (resultado.equals("Se registro exitosamente el envio")) {
+            JOptionPane.showMessageDialog(null, "El costo  de el envio es:" + nuevoEnvio.calcularCostoTotal());
+        }
     }
 
     public static void mostrarEnvioMasCaro(EmpresaEnvios empresaEnvios) {

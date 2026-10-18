@@ -4,17 +4,18 @@ public class EnvioNacional extends Envio {
     private String ciudadDestino;
     private boolean entregaDomicilio;
 
-    public EnvioNacional(String codigo, String destinatario, float peso, String ciudadDestino, boolean entregaDomicilio) {
-        super(codigo, destinatario, peso);
+    public EnvioNacional(String codigo, float peso, float incremento, float valorFijo, String destinatario, String ciudadDestino, boolean entregaDomicilio) {
+        super(codigo, peso, incremento, valorFijo, destinatario);
         this.ciudadDestino = ciudadDestino;
         this.entregaDomicilio = entregaDomicilio;
     }
 
     @Override
-    public float calcularCosto() {
+    public float calcularCostoTotal() {
+        float costo=calcularCostoFijo();
         if(entregaDomicilio) {
-            return 6000f + (2000f *peso)+3000f;
+            return costo+=3000f;
         }
-        return 6000f + (2000f *peso);
+        return costo;
     }
 }

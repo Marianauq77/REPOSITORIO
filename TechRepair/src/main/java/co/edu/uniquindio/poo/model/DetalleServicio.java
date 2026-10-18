@@ -46,14 +46,30 @@ public class DetalleServicio {
     public void setEstado(EstadoIntervencion estado) {
         this.estadoIntervencion = estado;
     }
+
+    @Override
+    public String toString() {
+        return "DetalleServicio{" + "\n"+
+                "codigo='" + codigo + "\n"+
+                "equipo=" + equipo.getCodigo() + "\n"+
+                "marca del equipo=" + equipo.getMarca() + "\n"+
+                "modelo del equipo=" + equipo.getModelo() + "\n"+
+                "servicio=" + servicio.getCodigo()+ "\n"+
+                "tecnicoAsignado=" + tecnicoAsignado.getNombre() + "\n"+
+                "observaciones='" + observaciones + "\n"+
+                "estadoIntervencion=" + estadoIntervencion.name() + "\n"+
+                "valor=" + calcularValorTotalDetalle()+ "\n"+
+                '}'+ "\n";
+    }
+
     public void asignarTecnico(){
 
     }
     public void agregarRepuesto(){
 
     }
-    public void calcularValorTotalDetalle(){
-
+    public float calcularValorTotalDetalle(){
+        return 0f;
     }
     public void actualizarEstadoIntervencion (){
 

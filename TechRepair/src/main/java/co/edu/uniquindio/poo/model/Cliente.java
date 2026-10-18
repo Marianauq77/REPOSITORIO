@@ -10,6 +10,7 @@ public class Cliente {
     private final String correo;
     private String direccion;
     private final ArrayList<Equipo> listaEquipos= new ArrayList<>();
+    private final ArrayList<OrdenServicio> listaOrdenes= new ArrayList<>();
     private final EmpresaTechRepair ownedByEmpresaTechRepair;
 
     public Cliente(String documento, String nombreCompleto, String telefono, String correo, String direccion, EmpresaTechRepair ownedByEmpresaTechRepair) {
@@ -61,7 +62,14 @@ public class Cliente {
 
     }
     public String consultarOrdenes(){
-        return "";
+        if (listaOrdenes.isEmpty()) {
+            return "El cliente no tiene órdenes";
+        }
+        String mensaje="";
+        for(OrdenServicio o: listaOrdenes){
+            mensaje+=o.mostrarOrden()+"\n";
+        }
+        return mensaje;
     }
 
 }

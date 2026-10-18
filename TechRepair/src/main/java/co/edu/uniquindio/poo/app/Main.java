@@ -62,8 +62,10 @@ public class Main {
                 case 12:
                     break;
                 case 13:
+                    ConsultarOrdenesCliente(empresaTechRepair);
                     break;
                 case 14:
+                    ConsultarTrabajosTecnico(empresaTechRepair);
                     break;
                 case 15:
                     break;
@@ -158,5 +160,27 @@ public class Main {
         Tecnico tecnicoNuevo = new Tecnico(codigo,documento, nombreCompleto, especialidad,estadoLaboral, empresaTechRepair);
         String resultado = empresaTechRepair.registrarTecnico(tecnicoNuevo);
         JOptionPane.showMessageDialog(null, resultado);
+    }
+    public static void ConsultarOrdenesCliente(EmpresaTechRepair empresaTechRepair){
+        String documento = JOptionPane.showInputDialog("Ingrese el docuemento del cliente al cual desea consultar las ordenes:");
+        Optional<Cliente> clienteEncontrado = empresaTechRepair.buscarClientePorDocumento(documento);
+        if(clienteEncontrado.isPresent()){
+            Cliente cliente=clienteEncontrado.get();
+            String resultado=cliente.consultarOrdenes();
+            JOptionPane.showMessageDialog(null, resultado);
+        }else{
+            JOptionPane.showMessageDialog(null, "No se encontro un cliente con ese documento de identidad");
+        }
+    }
+    public static void ConsultarTrabajosTecnico (EmpresaTechRepair empresaTechRepair){
+        String documento = JOptionPane.showInputDialog("Ingrese el docuemento del técnico al cual desea consulatr los trabajos:");
+        Optional<Tecnico> tecnicoEncontrado = empresaTechRepair.buscarTecnicoPorDocumento(documento);
+        if(tecnicoEncontrado.isPresent()){
+           Tecnico tecnico=tecnicoEncontrado.get();
+            String resultado=tecnico.consultarTrabajos();
+            JOptionPane.showMessageDialog(null, resultado);
+        }else{
+            JOptionPane.showMessageDialog(null, "No se encontro un técnico con ese documento de identidad");
+        }
     }
 }
