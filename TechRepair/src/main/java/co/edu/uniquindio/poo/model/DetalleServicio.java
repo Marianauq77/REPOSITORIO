@@ -74,5 +74,11 @@ public class DetalleServicio {
     public void actualizarEstadoIntervencion (){
 
     }
+    public boolean estaPendiente(){
+        if(estadoIntervencion==EstadoIntervencion.FINALIZADA){
+           return false;
+        }
+        return true;
+    }
 
 }

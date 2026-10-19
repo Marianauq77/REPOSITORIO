@@ -62,18 +62,22 @@ public class Main {
                 case 12:
                     break;
                 case 13:
-                    ConsultarOrdenesCliente(empresaTechRepair);
+                    consultarOrdenesCliente(empresaTechRepair);
                     break;
                 case 14:
-                    ConsultarTrabajosTecnico(empresaTechRepair);
+                    consultarTrabajosTecnico(empresaTechRepair);
                     break;
                 case 15:
+                    consultarEquiposPendientes(empresaTechRepair);
                     break;
                 case 16:
+                    generarReporteServicios(empresaTechRepair);
                     break;
                 case 17:
+                    generarReporteTecnicos(empresaTechRepair);
                     break;
                 case 18:
+                    consultarInventarioCritico(empresaTechRepair);
                     break;
                 case 19:
                     break;
@@ -161,7 +165,7 @@ public class Main {
         String resultado = empresaTechRepair.registrarTecnico(tecnicoNuevo);
         JOptionPane.showMessageDialog(null, resultado);
     }
-    public static void ConsultarOrdenesCliente(EmpresaTechRepair empresaTechRepair){
+    public static void consultarOrdenesCliente(EmpresaTechRepair empresaTechRepair){
         String documento = JOptionPane.showInputDialog("Ingrese el docuemento del cliente al cual desea consultar las ordenes:");
         Optional<Cliente> clienteEncontrado = empresaTechRepair.buscarClientePorDocumento(documento);
         if(clienteEncontrado.isPresent()){
@@ -172,7 +176,7 @@ public class Main {
             JOptionPane.showMessageDialog(null, "No se encontro un cliente con ese documento de identidad");
         }
     }
-    public static void ConsultarTrabajosTecnico (EmpresaTechRepair empresaTechRepair){
+    public static void consultarTrabajosTecnico (EmpresaTechRepair empresaTechRepair){
         String documento = JOptionPane.showInputDialog("Ingrese el docuemento del técnico al cual desea consulatr los trabajos:");
         Optional<Tecnico> tecnicoEncontrado = empresaTechRepair.buscarTecnicoPorDocumento(documento);
         if(tecnicoEncontrado.isPresent()){
@@ -182,5 +186,21 @@ public class Main {
         }else{
             JOptionPane.showMessageDialog(null, "No se encontro un técnico con ese documento de identidad");
         }
+    }
+    public static void consultarEquiposPendientes (EmpresaTechRepair empresaTechRepair){
+        String resultado= empresaTechRepair.consultarEquiposPendientes();
+        JOptionPane.showMessageDialog(null, resultado);
+    }
+    public static void generarReporteServicios (EmpresaTechRepair empresaTechRepair){
+        String resultado= empresaTechRepair.generarReporteServicios();
+        JOptionPane.showMessageDialog(null, resultado);
+    }
+    public static void generarReporteTecnicos(EmpresaTechRepair empresaTechRepair){
+        String resultado= empresaTechRepair.generarReporteTecnicos();
+        JOptionPane.showMessageDialog(null, resultado);
+    }
+    public static void consultarInventarioCritico(EmpresaTechRepair empresaTechRepair){
+        String resultado= empresaTechRepair.consultarInvetarioCritico();
+        JOptionPane.showMessageDialog(null, resultado);
     }
 }

@@ -64,6 +64,16 @@ public class OrdenServicio {
     public String calcularValorTotalOrden(){
         return "";
     }
+    public ArrayList<Equipo>obtenerEquiposPendientes(){
+        ArrayList<Equipo> listaEquiposPendientes= new ArrayList<>();
+        for(DetalleServicio d: listaDetalles){
+            if(d.estaPendiente()){
+                listaEquiposPendientes.add(d.getEquipo());
+            }
+        }
+        return listaEquiposPendientes;
+    }
+
     public void finalizar(){}
 
 

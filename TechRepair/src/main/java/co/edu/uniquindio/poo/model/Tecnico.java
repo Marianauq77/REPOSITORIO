@@ -88,4 +88,22 @@ public class Tecnico {
                 "EN PROCESO:\n" + enProceso + "\n" +
                 "FINALIZADOS:\n" + finalizados;
     }
+    public int contarDetallesFinalizados (){
+        int contador=0;
+        for(DetalleServicio d: listaDetallesAsignados){
+            if(d.getEstado()==EstadoIntervencion.FINALIZADA){
+                contador++;
+            }
+        }
+        return contador;
+    }
+    public double calcularTotalFinalizados(){
+        double total=0;
+        for(DetalleServicio d: listaDetallesAsignados){
+            if(d.getEstado()==EstadoIntervencion.FINALIZADA){
+                total+=d.calcularValorTotalDetalle();
+            }
+        }
+        return total;
+    }
 }

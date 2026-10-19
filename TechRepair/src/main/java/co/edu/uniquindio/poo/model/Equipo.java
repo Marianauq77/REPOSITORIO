@@ -44,4 +44,16 @@ public abstract class Equipo {
     public void setDescripcionEstadoFisico(String descripcionEstadoFisico) {
         this.descripcionEstadoFisico = descripcionEstadoFisico;
     }
+
+    @Override
+    public String toString() {
+        return "Equipo{" +
+                "codigo='" + codigo + '\n' +
+                ", numeroSerie='" + numeroSerie + '\n' +
+                ", marca='" + marca + '\n' +
+                ", modelo='" + modelo + '\n' +
+                ", añoFabricacion='" + añoFabricacion + '\n' +
+                ", descripcionEstadoFisico='" + descripcionEstadoFisico + '\n' +
+                '}'+ '\n';
+    }
 }
