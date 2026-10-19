@@ -47,6 +47,16 @@ public class Tecnico {
         this.estadoLaboral = estadoLaboral;
     }
 
+    public boolean estaAutorizado(Especialidad especialidadRequerida) {
+        if (estadoLaboral == EstadoLaboral.INACTIVO) {
+            return false;
+        }
+        if (especialidad == especialidadRequerida || especialidad == Especialidad.SOPORTE_GENERAL) {
+            return true;
+        }
+        return false;
+    }
+
     public void agregarDetalleAsignado(DetalleServicio detalle) {
         listaDetallesAsignados.add(detalle);
     }
@@ -55,6 +65,7 @@ public class Tecnico {
         int cantDetalles = listaDetallesAsignados.size(); //size guarda un int
         return cantDetalles;
     }
+
 
     public String consultarTrabajos() {
         if (listaDetallesAsignados.isEmpty()) {

@@ -83,6 +83,41 @@ public class EmpresaTechRepair {
         }
         return "Ya existe un tecnico con esa informacion";
     }
+    public Optional<Tecnico> buscarTecnicoAutorizado(Especialidad especialidadRequerida) {
+        return listaTecnicos.stream().filter(t -> t.estaAutorizado(especialidadRequerida)).min(Comparator.comparingInt(Tecnico::cantidadDetallesSignados));
+        //Primero filtra los que esten autorizados y asigna el que menos detalles asigandos tiene
+    }
+    public String asignarTecnicoADetalle(String codigoOrden, String codigoDetalle) {
+        Optional<OrdenServicio> ordenEncontrada = buscarOrdenPorCodigo(codigoOrden);
+        if (ordenEncontrada.isEmpty()) {
+            return "No existe una orden con el código " + codigoOrden;
+        }
+        OrdenServicio orden= ordenEncontrada.get();
+
+        Optional<DetalleServicio> detalleOpt = orden.buscarDetallePorCodigo(codigoDetalle);
+        if (detalleOpt.isEmpty()) {
+            return "No existe un detalle con el código " + codigoDetalle;
+        }
+        DetalleServicio detalle = detalleOpt.get();
+
+        Especialidad especialidadRequerida = detalle.getEquipo().getEspecialidadRequerida();
+
+        Optional<Tecnico> tecnicoAutorizado = buscarTecnicoAutorizado(especialidadRequerida);
+
+        if (tecnicoAutorizado.isEmpty()) {
+            return "Error: No hay ningún técnico activo y autorizado para atender la especialidad "
+                    + especialidadRequerida;
+        }
+
+        Tecnico tecnico = tecnicoAutorizado.get();
+
+        // Se añade el técnico al detalle y se añade a su lista de asignaciones
+        detalle.setTecnico(tecnico);
+        tecnico.agregarDetalleAsignado(detalle);
+
+        return "Técnico " + tecnico.getNombre() + " (Doc: " + tecnico.getDocumento()
+                + ") asignado exitosamente al detalle " + codigoDetalle;
+    }
 
     public Optional<Tecnico> buscarTecnicoPorDocumento(String documento) {
         return listaTecnicos.stream().filter(t -> documento.equals(t.getDocumento())).findFirst();
@@ -96,11 +131,6 @@ public class EmpresaTechRepair {
     public String agregarDetalleAOrden(String codigoOrden, DetalleServicio detalle) {
         //Busca el orden servicio y si lo encuentra le mete el detalle para que ella lo agregue (ya esta el metodo en la orden)
         return "";
-    }
-
-    public Optional<Tecnico> buscarTecnicoAutorizado(Especialidad especialidadRequerida) {
-        return listaTecnicos.stream().filter(t -> t.estaAutorizado(especialidadRequerida)).min(Comparator.comparingInt(Tecnico::cantidadDetallesSignados));
-        //Primero filtra los que esten autorizados y asigna el que menos detalles asigandos tiene
     }
 
     public Optional<OrdenServicio> buscarOrdenPorCodigo(String codigoOrden) {
