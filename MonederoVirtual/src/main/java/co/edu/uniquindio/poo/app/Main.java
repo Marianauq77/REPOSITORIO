@@ -151,7 +151,7 @@ public class Main {
         boolean existe;
         do{
 
-        }while()
+        }while(existe); //La misma logica que cuando  se creo el principal
 
     }
 }
