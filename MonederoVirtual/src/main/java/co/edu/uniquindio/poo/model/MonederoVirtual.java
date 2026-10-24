@@ -6,14 +6,14 @@ import java.util.Optional;
 public class MonederoVirtual {
     private final String nombre;
     private final String nit;
-    private ArrayList <Monedero> listaMonederos;
-    private ArrayList <Usuario> listaUsuarios;
-    private ArrayList <Beneficio> listaBeneficios;
+    private ArrayList<Monedero> listaTodosMonederos;
+    private ArrayList<Usuario> listaUsuarios;
+    private ArrayList<Beneficio> listaBeneficios;
 
     public MonederoVirtual(String nombre, String nit) {
         this.nombre = nombre;
-        this.nit=nit;
-        this.listaMonederos = new ArrayList<>();
+        this.nit = nit;
+        this.listaTodosMonederos = new ArrayList<>();
         this.listaUsuarios = new ArrayList<>();
         this.listaBeneficios = new ArrayList<>();
     }
@@ -29,29 +29,38 @@ public class MonederoVirtual {
     public void setListaClientes(ArrayList<Usuario> listaUsuarios) {
         this.listaUsuarios = listaUsuarios;
     }
+
     //CRUD USUARIO
-    public String crearUsuario(Usuario usuario){
-        if(buscarUsuarioDocumentoIdentidad(usuario.getDocumentoIdentidad()).isEmpty()){
+    public String crearUsuario(Usuario usuario) {
+        if (buscarUsuarioDocumentoIdentidad(usuario.getDocumentoIdentidad()).isEmpty()) {
             listaUsuarios.add(usuario);
             return "Cliente registrado con exito";
         }
-        return  "Ya hay un cliente con esa información, por favor verifique el documento de identidad";
+        return "Ya hay un cliente con esa información, por favor verifique el documento de identidad";
     }
-    public Optional<Usuario> buscarUsuarioDocumentoIdentidad(String documentoIdentidad){
-        return listaUsuarios.stream().filter(usuario ->documentoIdentidad.equals(usuario.getDocumentoIdentidad())).findFirst();
+
+    public Optional<Usuario> buscarUsuarioDocumentoIdentidad(String documentoIdentidad) {
+        return listaUsuarios.stream().filter(usuario -> documentoIdentidad.equals(usuario.getDocumentoIdentidad())).findFirst();
     }
-    //CRUD BENEFICIO
-    public void crearBeneficios(Beneficio beneficio100, Beneficio beneficio500, Beneficio beneficio1000){
-        listaBeneficios.add(beneficio100);
-        listaBeneficios.add(beneficio500);
-        listaBeneficios.add(beneficio1000);
+
+    public Monedero crearMonedero(Usuario usuario, String codigo, String nombre,
+                                  TipoMonedero tipo, double saldo) {
+        Monedero monedero = new Monedero(codigo, nombre, saldo, tipo);
+        listaTodosMonederos.add(monedero);   // lista de TODOS
+        usuario.agregarMonedero(monedero);   // lista de SUS monederos del cliente
+        return monedero;
     }
-    public boolean verificarCodigoMonederoExiste(String codigo){
-        for(Monedero aux: listaMonederos){
-            if(codigo.equals(aux.getCodigo())){
-                return true;
-            }
+        //CRUD BENEFICIO
+        public void crearBeneficios (Beneficio beneficio){
+            listaBeneficios.add(beneficio);
         }
-        return false;
+        public boolean verificarCodigoMonederoExiste (String codigo){
+            for (Monedero aux : listaTodosMonederos) {
+                if (codigo.equals(aux.getCodigo())) {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
-}
+

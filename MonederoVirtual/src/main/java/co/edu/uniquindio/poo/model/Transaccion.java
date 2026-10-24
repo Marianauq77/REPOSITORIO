@@ -2,13 +2,13 @@ package co.edu.uniquindio.poo.model;
 
 import java.time.LocalDate;
 
-public abstract class Transaccion { //es como un molde para sus subclases y los obejtos se crean desde las sublcases
+public abstract class Transaccion {
     private final String codigo;
     private final LocalDate fecha;
     private final double monto;
     private  boolean atipica;
     private EstadoTransaccion estado;
-    public Transaccion(String codigo, LocalDate fecha, double monto) { //Las subclases heredan los atributos y metodos de la clase abstracta, pero pueden tener diferente información
+    public Transaccion(String codigo, LocalDate fecha, double monto) {
         this.codigo = codigo;
         this.fecha = fecha;
         this.monto = monto;
@@ -35,7 +35,7 @@ public abstract class Transaccion { //es como un molde para sus subclases y los 
         this.estado = estado;
     }
 
-    public boolean isAtipica() {
+    public boolean esAtipica() {
         return atipica;
     }
 

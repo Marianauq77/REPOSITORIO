@@ -8,27 +8,19 @@ public class Monedero {
     private final String nombre;
     private double saldo;
     private final TipoMonedero tipoMonedero;
-    private short puntosAcumulados;
     private ArrayList<Transaccion> listaTransacciones;
     private ArrayList<TransaccionProgramada> listaTransaccionesProgramadas;
 
-    public Monedero(String codigo, String nombre, TipoMonedero tipoMonedero, double saldo) {
+    public Monedero(String codigo, String nombre,  double saldo, TipoMonedero tipoMonedero) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.tipoMonedero = tipoMonedero;
         this.saldo = saldo;
+        this.tipoMonedero = tipoMonedero;
         this.listaTransacciones=new ArrayList<>();
         this.listaTransaccionesProgramadas=new ArrayList<>();
 
     }
 
-    public short getPuntosAcumulados() {
-        return puntosAcumulados;
-    }
-
-    public void setPuntosAcumulados(short puntosAcumulados) {
-        this.puntosAcumulados = puntosAcumulados;
-    }
 
     public TipoMonedero getTipoMonedero() {
         return tipoMonedero;

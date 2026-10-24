@@ -9,6 +9,7 @@ public class Usuario {
     private String correo;
     private Rango rango;
     private String contrasenia;
+    private int puntosAcumulados;
     ArrayList<Monedero> listaMonederos;
     ArrayList<Notificacion> listaNotificaciones;
     public Usuario(String documentoIdentidad, String nombreCompleto, String telefono, String correo, String contrasenia) {
@@ -53,6 +54,14 @@ public class Usuario {
         this.rango = rango;
     }
 
+    public int getPuntosAcumulados() {
+        return puntosAcumulados;
+    }
+
+    public void setPuntosAcumulados(short puntosAcumulados) {
+        this.puntosAcumulados = puntosAcumulados;
+    }
+
     public ArrayList<Monedero> getListaMonederos() {
         return listaMonederos;
     }
@@ -71,4 +80,8 @@ public class Usuario {
     public boolean verificarContraseña(String contrasenia){
         return contrasenia.equals(this.contrasenia);
     }
+    public void agregarMonedero(Monedero monedero){
+        listaMonederos.add(monedero);
+    }
 }
+
