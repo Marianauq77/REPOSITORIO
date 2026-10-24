@@ -68,7 +68,7 @@ public class Main {
                         case 10:
                             break;
                         case 11:
-                            crearOtroMonedero();
+                            crearOtroMonedero(monederoVirtual);
                             break;
                         case 0:
                             usuarioActual = null; // Aqui se cierra la sesion
@@ -123,7 +123,7 @@ public class Main {
             if (existe) {
                 JOptionPane.showMessageDialog(null, "Ese código ya existe, elija otro");
             }
-        } while (existe);
+        } while (existe); //Le pide el codigo al usuario hasta que enucnetre uno que no exista
         monederoVirtual.crearMonedero(usuario, codigo, "PRINCIPAL", TipoMonedero.GASTOS_DIARIOS, 0);
         usuarioActual = usuario; // queda con la sesion iniciada
         JOptionPane.showMessageDialog(null, "Registro exitoso. Bienvenido " + nombreCompleto);
@@ -145,5 +145,13 @@ public class Main {
                         "11.Crear otra monedero \n"+
                         "0. Salir"));
         return opcion;
+    }
+    public void crearOtroMonedero(MonederoVirtual monederoVirtual){
+        String codigo;
+        boolean existe;
+        do{
+
+        }while()
+
     }
 }
