@@ -16,8 +16,9 @@ public class EmpleadoVentas extends Empleado {
     @Override
     public String toString() {
         return "EmpleadoVentas{" +
-                "totalVentas=" + totalVentas +
-                ", porcentajeComision=" + porcentajeComision +
+                super.toString()+
+                "totalVentas=" + totalVentas + '\n' +
+                ", porcentajeComision=" + porcentajeComision + '\n' +
                 '}';
     }
 

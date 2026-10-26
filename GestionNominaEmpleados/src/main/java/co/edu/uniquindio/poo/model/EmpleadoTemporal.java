@@ -16,8 +16,9 @@ public class EmpleadoTemporal extends Empleado{
     @Override
     public String toString() {
         return "EmpleadoTemporal{" +
-                "diasTrabajados=" + diasTrabajados +
-                ", valorDia=" + valorDia +
+                super.toString()+
+                "diasTrabajados=" + diasTrabajados + '\n' +
+                ", valorDia=" + valorDia + '\n' +
                 '}';
     }
 

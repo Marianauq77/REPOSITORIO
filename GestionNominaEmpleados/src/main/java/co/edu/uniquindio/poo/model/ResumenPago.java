@@ -4,12 +4,12 @@ public record ResumenPago(String documento, String nombre, String tipoEmpleado, 
     @Override
     public String toString() {
         return "ResumenPago{" +
-                "documento='" + documento + '\'' +
-                ", nombre='" + nombre + '\'' +
+                "documento='" + documento + '\n' +
+                ", nombre='" + nombre + '\n' +
                 ", tipoEmpleado='" + tipoEmpleado + '\'' +
-                ", salarioBruto=" + salarioBruto +
-                ", descuentos=" + descuentos +
-                ", salarioNeto=" + salarioNeto +
+                ", salarioBruto=" + salarioBruto +'\n' +
+                ", descuentos=" + descuentos + '\n' +
+                ", salarioNeto=" + salarioNeto + '\n' +
                 '}';
     }
 }

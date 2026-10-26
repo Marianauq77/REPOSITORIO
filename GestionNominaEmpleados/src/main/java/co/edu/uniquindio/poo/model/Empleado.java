@@ -90,13 +90,13 @@ public abstract class Empleado {
     @Override
     public String toString() {
         return "Empleado{" +
-                "nombre='" + nombre + '\'' +
-                ", documento='" + documento + '\'' +
-                ", edad=" + edad +
-                ", salarioBase=" + salarioBase +
-                ", categoria=" + categoria +
-                ", descuentoSalud=" + descuentoSalud +
-                ", descuentoPension=" + descuentoPension +
+                "nombre='" + nombre + '\n' +
+                ", documento='" + documento + '\n' +
+                ", edad=" + edad + '\n' +
+                ", salarioBase=" + salarioBase + '\n' +
+                ", categoria=" + categoria + '\n' +
+                ", descuentoSalud=" + descuentoSalud + '\n' +
+                ", descuentoPension=" + descuentoPension + '\n' +
                 '}';
     }
 
@@ -114,9 +114,14 @@ public abstract class Empleado {
         }
         return resultado;
     }
-    public void calcularDescuentos(){
+    public float calcularDescuentos(){ //Llama a calcular Salario bruto de cada hija correspondiente
+        float descuento= calcularSalarioBruto() * (descuentoSalud + descuentoPension) / 100; //Otra cosa es que en el docuemnto del
+        // taller no decia explicitamente la formula para calcular los descuentos de salud y pension, por eso es una simulación
+        return descuento;
     }
-    public void calcularSalarioNeto(){
+    public float calcularSalarioNeto(){ //Llama a calcular Salario bruto de cada hija correspondiente
+        float salarioNeto=calcularSalarioBruto() - calcularDescuentos();
+        return salarioNeto;
     }
     public void mostrarInformacion(){
     }

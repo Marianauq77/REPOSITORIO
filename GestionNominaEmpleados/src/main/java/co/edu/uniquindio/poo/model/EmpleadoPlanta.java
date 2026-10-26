@@ -26,10 +26,11 @@ public class EmpleadoPlanta extends Empleado {
     @Override
     public String toString() {
         return "EmpleadoPlanta{" +
-                "cargo='" + cargo + '\'' +
-                ", horasExtra=" + horasExtra +
-                ", valorHoraExtra=" + valorHoraExtra +
-                ", auxilioTransporte=" + auxilioTransporte +
+                super.toString()+ // llama al toString de los atributos que tienen todos los empleados en comun
+                "cargo='" + cargo + '\n' +
+                ", horasExtra=" + horasExtra +'\n' +
+                ", valorHoraExtra=" + valorHoraExtra +'\n' +
+                ", auxilioTransporte=" + auxilioTransporte +'\n' +
                 '}';
     }
 
