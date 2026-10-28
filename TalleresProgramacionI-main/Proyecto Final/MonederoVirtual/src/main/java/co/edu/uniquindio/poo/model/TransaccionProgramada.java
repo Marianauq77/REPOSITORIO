@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class TransaccionProgramada {
     private final String codigo;
-    private final LocalDate fechaEjecucion;
+    private LocalDate fechaEjecucion;
     private Frecuencia frencuenciaProgramada;
     private EstadoTransaccion estado;
     private Transaccion transaccion;
@@ -25,6 +25,10 @@ public class TransaccionProgramada {
 
     public LocalDate getFechaEjecucion() {
         return fechaEjecucion;
+    }
+
+    public void setFechaEjecucion(LocalDate fechaEjecucion) {
+    this.fechaEjecucion = fechaEjecucion;
     }
 
     public Frecuencia getFrencuenciaProgramada() {

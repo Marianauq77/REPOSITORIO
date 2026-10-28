@@ -67,6 +67,9 @@ public class Monedero {
     public void agregarTransaccionProgramada (Transaccion transaccion){
         listaTransaccionesProgramadas.add(transaccion);
     }
+    public void aplicarbeneficio1000(){
+        setSaldo(saldo +50);
+    }
 
 }
 

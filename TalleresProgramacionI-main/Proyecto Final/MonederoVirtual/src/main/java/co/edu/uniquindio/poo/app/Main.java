@@ -62,10 +62,13 @@ public class Main {
                             programarTransaccion(monederoVirtual);
                             break;
                         case 5:
+                            
                             break;
                         case 6:
+                            ConsultarpuntosYRango(monederoVirtual);
                             break;
                         case 7:
+                            CanjearPuntos();
                             break;
                         case 8:
                             break;
@@ -247,6 +250,52 @@ public class Main {
                     JOptionPane.showMessageDialog("Opción no válida");  
             }  
             }while(opcionTransaccion!=0);
+    }
+    
+    public static void consultarpuntosYRango(MonederoVirtual monederoVirtual){
+        String resultado= usuarioActual.ConsultarpuntosYRango();
+        JOptionPane.showMessageDialog(null, resultado);
+
+    }
+    public static void canjearPuntos (MonederoVirtual monederoVirtual){
+        int opcion= Integer.parseInt(JOptionPane.showInputDialog(null,
+            "Usted tiene: "+ usuarioActual.getPuntosAcumulados+" puntos\n" +
+            "ingrese el beneficio por el cual quiere canjear sus puntos:\n"+ 
+            "1. 100 puntos:Reducción del 10% en la comisión por transferencias.\n" +
+            "2. 500 puntos:Un mes sin cargos por retiros. \n"+
+            "3. 1000 puntos:Bono de saldo de 50 unidades en el monedero." +
+            "0. Cancelar"));
+            if(opcion=0){
+                return;
+            }
+
+            switch (opcion) {
+                case 1:
+                    String resultado1=monederoVirtual.aplicarbeneficio100(usuarioActual);
+                    JOptionPane.showMessageDialog(null, resultado1);
+                    break;
+                case 2:
+                    String resultado2=monederoVirtual.aplicarbeneficio500(usuarioActual);
+                    JOptionPane.showMessageDialog(null, resultado2);
+                    break;
+
+                case 3:
+                    String codigo= JOptionPane.showInputDialog(null,"ingrese el codigo del monedero al cual quiere aplicarle el beneficio");
+                    Optional <Monedero> monederoUsuario= usuarioActual.buscarMonederoUsuario(codigo);
+                    if(monederoUsuario.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "No existe un monedero con ese codigo");
+                    return;
+                    }
+                    Monedero monedero= monederoUsuario.get();
+                    String resultado3=monederoVirtual.aplicarbeneficio1000(usarioActual, monedero);
+                    JOptionPane.showMessageDialog(null, resultado3);
+                    break;
+            
+                default:
+                    JOptionPane.showMessageDialog(null, "Opción no válida");
+                    break;
+            }
+    
     }
     public static void crearOtroMonedero(MonederoVirtual monederoVirtual){
         String codigo;

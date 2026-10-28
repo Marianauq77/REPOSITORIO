@@ -115,6 +115,7 @@ public class MonederoVirtual {
             usuarioActual.setRango(); // ya lo cambia con los puntos acumulados
         
             return "La transferencia se realizo con exito, su código es:"+ codigoTransferencia+"\n"+
+            "Comision: $" + comision+
              "Los puntos que ganó con esta transferencia son: "+puntos;
 
         }
@@ -145,7 +146,7 @@ public class MonederoVirtual {
                 return "El valor a retirar debe ser mayor a 0";
             }
             String codigoRetiro=generarCodigoTransaccion();
-            LocaDate fin= usuarioActual.getFechaSinCargosRetiros();
+            LocalDate fin= usuarioActual.getFechaSinCargosRetiros();
             boolean sinCargo= fin!=null && !LocalDate.now().isAfter(fin);
             Transaccion retiro= new Retiro (codigoRetiro, LocalDate.now(), monto, sinCargo);
             Retiro r1=(Retiro)retiro;
@@ -163,6 +164,7 @@ public class MonederoVirtual {
             usuarioActual.setRango();
 
             return "El retiro se realizó con éxito, su código es: "+codigoRetiro+" \n"+
+            "Cargo: $" + cargo+
             "Los puntos que ganó con esta transacción son: "+puntos;
         }
        
@@ -228,7 +230,7 @@ public class MonederoVirtual {
             usuario.setDescuentoTransferencia(true);
             usuario.setPuntosAcumulados(usuario.getPuntosAcumulados()-100);
             usuario.setRango();
-            return  "El beneficio se aplicó exitosamante";
+            return  "El beneficio se canjeó exitosamante, ahora tiene un 10% de descuento en la comision de su proxima transferencia";
         }
          public String aplicarbeneficio500 (Usuario usuario){
             if(usuario.getPuntosAcumulados()<500){
@@ -237,7 +239,7 @@ public class MonederoVirtual {
             usuario.setFechaFinSinCargosRetiros(LocalDate.now().plusMonths(1));
             usuario.setPuntosAcumulados(usuario.getPuntosAcumulados()-500);
             usuario.setRango();
-            return  "El beneficio se aplicó exitosamante";
+            return  "El beneficio se canjeó exitosamante, ahora tiene un mes sin cargos por retiro";
         }
          public String aplicarbeneficio1000 (Usuario usuario, Monedero monedero ){
             if(usuario.getPuntos<1000){
@@ -246,9 +248,8 @@ public class MonederoVirtual {
             monedero.aplicarbeneficio1000();
             usuario.setPuntosAcumulados(usuario.getPuntosAcumulados()-1000);
             usuario.setRango();
-            return "El beneficio se aplicó exitosamante";
+            return "El beneficio se canjeó exitosamante, ahora tiene 50 unidades más en su saldo";
         }
-        
 
 }
 

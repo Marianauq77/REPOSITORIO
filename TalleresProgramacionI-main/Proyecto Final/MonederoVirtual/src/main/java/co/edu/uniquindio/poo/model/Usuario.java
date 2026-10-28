@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo.model;
 import java.util.Optional;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Usuario {
@@ -7,9 +8,11 @@ public class Usuario {
     private final String nombreCompleto;
     private String telefono;
     private String correo;
-    private Rango rango;
+    private Rango rango=Rango.BRONCE;
     private String contrasenia;
     private int puntosAcumulados;
+    private boolean descuentoTransferencia;
+    private LocalDate FechaFinSinCargosRetiros;
     ArrayList<Monedero> listaMonederos;
     ArrayList<Notificacion> listaNotificaciones;
     public Usuario(String documentoIdentidad, String nombreCompleto, String telefono, String correo, String contrasenia) {
@@ -50,8 +53,19 @@ public class Usuario {
         return rango;
     }
 
-    public void setRango(Rango rango) {
-        this.rango = rango;
+    public void setRango() {
+        if(puntosAcumulados<=500){
+        this.rango = Rango.BRONCE;
+        }
+        else if(puntosAcumulados>=501 && puntosAcumulados<=1000){
+        this.rango = Rango.PLATA;
+        }
+        else if(puntosAcumulados>=1001 && puntosAcumulados<=5000){
+        this.rango = Rango.ORO;
+        }
+        else if(puntosAcumulados>=1001 && puntosAcumulados<=5000){
+        this.rango = Rango.PLATINO;
+        }
     }
 
     public int getPuntosAcumulados() {
@@ -77,6 +91,22 @@ public class Usuario {
     public void setListaNotificaciones(ArrayList<Notificacion> listaNotificaciones) {
         this.listaNotificaciones = listaNotificaciones;
     }
+    public void setDescuentoTransferencia(boolean booleano) {
+        this.descuentoTransferencia= booleano;
+    }
+
+    public boolean getDescuentoTransferencia() {
+        return descuentoTransferencia;
+    }
+    public void setFechaFinSinCargosRetiros(LocalDate fecha) {
+        this.descuentoTransferencia= fecha;
+    }
+
+    public LocalDate getFechaSinCargosRetiros() {
+        return FechaSinCargosRetiros;
+    }
+
+
     public boolean verificarContraseña(String contrasenia){
         return contrasenia.equals(this.contrasenia);
     }
@@ -85,5 +115,40 @@ public class Usuario {
     }
     public Optional <Monedero> buscarMonederoUsuario(String codigo){
         return listaMonederos.stream().filter(m -> codigo.equals(m.getCodigo())).findFirst();
+
+    public boolean detectarTransaccionesAtipicas(double monto){
+        double suma=0;
+        int contadorTransacciones=0;
+        double promedio=0;
+        for(Monedero m: listaMonederos){
+            for(Transaccion t: m.getListaTransacciones()){
+                contadorTransacciones++;
+                suma+=t.getMonto();
+            }
+        }
+        if(contadorTransacciones<=3){
+            return false;
+        }
+        promedio= suma/contadorTransacciones;
+        double desviacionEstandar=0;
+        double valorMenosPromedio=0;
+
+        for(Monedero m: listaMonederos){
+            for(Transaccion t: m.getListaTransacciones()){
+                valorMenosPromedio+= Math.pow(t.getMonto()-promedio, 2);
+            }
+        }
+        desviacionEstandar= Math.sqrt(valorMenosPromedio/contadorTransacciones);
+        double limite= promedio + 2*desviacionEstandar;
+        if(monto>limite){
+            return true;
+        }
+        return false;
+    }
+    public String ConsultarpuntosYRango(){
+        return "Puntos de"+ nombreCompleto + ":\n"+  + puntosAcumulados + "\n"+
+                "Su rango es:"+ "\n"+ rango;
+               
     }
 }
+
