@@ -81,15 +81,19 @@ public class MonederoVirtual {
                  return "No puedes transferir al mismo monedero";
 
             }
-            if(monederoOrigen.getSaldo()<monto+ (monto*0.01)){
-                return "Saldo insuficiente para realizar la transferencia";
-            }
             
             Monedero monederoDestino=monederoDestinatario.get();
 
             String codigoTransferencia= generarCodigoTransaccion();
-            Transaccion transferencia= new Transferencia(codigoTransferencia, fecha , monto, codigoDestinatario );
-            transferencia.aplicar(monederoOrigen);
+            boolean conDescuento = usuarioActual.getDescuentoTransferencia();
+            Transaccion transferencia= new Transferencia(codigoTransferencia, fecha , monto, codigoDestinatario, conDescuento );
+            Transferencia t1=  (Transferencia)transferencia; //Se convierte a transferencia para poderle aplicar el metodo propio
+            double comision=t1.aplicarComision();
+            usuarioActual.setDescuentoTransferencia(false); // cuando gaste el beneficio
+             if(monederoOrigen.getSaldo()<monto+ comision){
+                return "Saldo insuficiente para realizar la transferencia";
+            }
+            
             boolean atipica=usuarioActual.detectarTransaccionesAtipicas(monto);
             transferencia.setAtipica(atipica);
             //Si la transaccion es programada, no se crea y se descuenta del saldo hasta la fecha acordada
@@ -100,10 +104,10 @@ public class MonederoVirtual {
                  "El código de esta transacción es: "+codigo+"\n"+
                  "La fecha programada es: "+fecha;
             }
+            transferencia.aplicar(monederoOrigen);
             registrarTransaccion(monederoOrigen, transferencia);
             int puntos=transferencia.calcularPuntos(); 
-
-            Transaccion nuevoDeposito= new Transferencia (generarCodigoTransaccion(), fecha, monto);
+            Transaccion nuevoDeposito= new Deposito (generarCodigoTransaccion(), fecha, monto);
             nuevoDeposito.aplicar(monederoDestino);
             registrarTransaccion(monederoDestino, nuevoDeposito);
 
@@ -140,11 +144,15 @@ public class MonederoVirtual {
             if(monto<=0){
                 return "El valor a retirar debe ser mayor a 0";
             }
-            if(monedero.getSaldo()<monto){
+            String codigoRetiro=generarCodigoTransaccion();
+            LocaDate fin= usuarioActual.getFechaSinCargosRetiros();
+            boolean sinCargo= fin!=null && !LocalDate.now().isAfter(fin);
+            Transaccion retiro= new Retiro (codigoRetiro, LocalDate.now(), monto, sinCargo);
+            Retiro r1=(Retiro)retiro;
+            double cargo= r1.calcularCargo();
+             if(monedero.getSaldo()<monto+cargo){
                 return "Saldo insuficiente para hacer el retiro";
             }
-            String codigoRetiro=generarCodigoTransaccion();
-            Transaccion retiro= new Retiro (codigoRetiro, LocalDate.now(), monto);
             retiro.aplicar(monedero);
             boolean atipica= usuarioActual.detectarTransaccionesAtipicas(monto);
             retiro.setAtipica(atipica);
@@ -169,20 +177,76 @@ public class MonederoVirtual {
             return "T" + contadorTransacciones; //genera el codigo solito cada que se va hacer cualquier transaccion
         }
 
+    
         //Método que busca cuáles transacciones se deben aplicar hoy y las ejecuta de acuerdo a su tipo de transaccion
         public void ejecutarTransaccionesProgramadas(){
+            //Algoritmo de transacciones
+            listaTransaccionesProgramadas= listaTransaccionesProgramadas.stream().sorted(Comparator.comparing(programada -> programada.getFechaEjecucion)).collect(Collectors.toCollection(ArrayList::new));
+           //Ejecuta y programa
             LocalDate hoy= LocalDate.now();
             for(TransaccionProgramada programada: listaTransaccionesProgramadas){
-                if(programada.getEstado()== EstadoTransaccion.PENDIENTE && programada.getFechaEjecucion()== hoy){
+                if(programada.getEstado()== EstadoTransaccion.PENDIENTE && programada.getFechaEjecucion().equals(hoy)&& !programada.getFechaEjecucion().isAfter(hoy)){
                      Transaccion transaccion = programada.getTransaccion();
-                     if(transaccion instanceof Deposito){
-                        deposito.aplicar(programada.getMonedero());
-                     }else if(transaccion instanceof Transferencia){
-                        transferencia.aplicar(programada.getMonedero());
+                     if(programada.getMonedero().getSaldo()<= 0) {
+                        break;
+                     }
+                     if(programada.getTransaccion() instanceof Transferencia){
+                        Optional<Monedero> monederoDestino= buscarMonederoPorCodigo(transferencia.getDestino());
+                        if(monederoDestino.isPresent){
+                        nuevoDeposito.aplicar(monederoDestino);
+                        registrarTransaccion(monederoDestino, nuevoDeposito);
+                        }
+                     }
+                    transaccion.aplicar(programada.getMonedero());
+                     programada.setEstado(EstadoTransaccion. COMPLETADA);
                     }
-                        
+                    Frecuencia frecuencia= programada.getFrencuenciaProgramada();
+                    if(frecuencia!= null){
+                        LocalDate proximaFecha= calcularProximaFecha(frecuencia, programada.getFechaEjecucion());
+                        programada.setFechaEjecucion(proximaFecha);
+                    }
                 }
             }
+        //Método que me permite calcular la próxima fecha si es que hay una frecuencia
+        public LocalDate calcularProximaFecha (Frecuencia frecuencia, LocalDate fecha){
+            switch(frecuencia){
+                case DIARIA:
+                    return fecha.plusDays(1);
+                case SEMANAL:
+                    return fecha.plusWeeks(1);
+                case MENSUAL:
+                    return fecha.plusMonths(1);
+                default:
+                    return fecha;
+            }
+        }
+    
+        public String aplicarbeneficio100 (Usuario usuario){
+            if(usuario.getPuntosAcumulados()<100){
+                return "Puntos insuficientes para el canje";
+            }
+            usuario.setDescuentoTransferencia(true);
+            usuario.setPuntosAcumulados(usuario.getPuntosAcumulados()-100);
+            usuario.setRango();
+            return  "El beneficio se aplicó exitosamante";
+        }
+         public String aplicarbeneficio500 (Usuario usuario){
+            if(usuario.getPuntosAcumulados()<500){
+                return "Puntos insuficientes para el canje";
+            }
+            usuario.setFechaFinSinCargosRetiros(LocalDate.now().plusMonths(1));
+            usuario.setPuntosAcumulados(usuario.getPuntosAcumulados()-500);
+            usuario.setRango();
+            return  "El beneficio se aplicó exitosamante";
+        }
+         public String aplicarbeneficio1000 (Usuario usuario, Monedero monedero ){
+            if(usuario.getPuntos<1000){
+                return "Puntos insuficientes para el canje";
+            }
+            monedero.aplicarbeneficio1000();
+            usuario.setPuntosAcumulados(usuario.getPuntosAcumulados()-1000);
+            usuario.setRango();
+            return "El beneficio se aplicó exitosamante";
         }
         
 
