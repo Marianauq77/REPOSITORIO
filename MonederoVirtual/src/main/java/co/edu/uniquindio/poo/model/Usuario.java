@@ -1,6 +1,7 @@
 package co.edu.uniquindio.poo.model;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class Usuario {
     private final String documentoIdentidad;
@@ -82,6 +83,38 @@ public class Usuario {
     }
     public void agregarMonedero(Monedero monedero){
         listaMonederos.add(monedero);
+    }
+    public Optional<Monedero> buscarMonederoUsuario(String codigo){
+        return listaMonederos.stream().filter(m -> codigo.equals(m.getCodigo())).findFirst();
+    }
+    public boolean detectarTransaccionesAtipicas(double monto){
+        double suma=0;
+        int contadorTransacciones=0;
+        double promedio=0;
+        for(Monedero m: listaMonederos){
+            for(Transaccion t: m.getListaTransacciones()){
+                contadorTransacciones++;
+                suma+=t.getMonto();
+            }
+        }
+        if(contadorTransacciones<=3){
+            return false;
+        }
+        promedio= suma/contadorTransacciones;
+        double desviacionEstandar=0;
+        double valorMenosPromedio=0;
+
+        for(Monedero m: listaMonederos){
+            for(Transaccion t: m.getListaTransacciones()){
+                valorMenosPromedio+= Math.pow(t.getMonto()-promedio, 2);
+            }
+        }
+        desviacionEstandar= Math.sqrt(valorMenosPromedio/contadorTransacciones);
+        double limite= promedio + 2*desviacionEstandar;
+        if(monto>limite){
+            return true;
+        }
+        return false;
     }
 }
 

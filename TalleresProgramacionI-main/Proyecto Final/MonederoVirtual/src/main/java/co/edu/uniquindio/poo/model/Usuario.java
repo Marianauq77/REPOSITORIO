@@ -150,5 +150,59 @@ public class Usuario {
                 "Su rango es:"+ "\n"+ rango;
                
     }
+    public String consultarReportesGastos(){
+        double totalDepositado=0;
+        double totalTransferido=0;
+        double totalRetirado=0;
+        int contadorTransacciones = 0;
+        for(Monedero m: listaMonederos){
+            for(Transaccion t: m.getListaTransacciones()){
+                contadorTransacciones++;
+                if(t instanceof Deposito){
+                  totalDepositado+= t.getMonto();  
+                }
+                if(t instanceof Transferencia){
+                  totalTransferido+= t.getMonto();  
+                }
+                if(t instanceof Retiro){
+                  totalRetirado+= t.getMonto();  
+                }
+            }
+        }
+        if(contadorTransacciones ==0){
+            return "Aun no tienes transacciones para generar el reporte";
+        }
+        return "Reporte de gastos de " + nombreCompleto + ":\n" +
+                "Numero de transacciones:\n" + contadorTransacciones + "\n" +
+                "Total depositado:\n" + totalDepositado + "\n" +
+                "Total transferido:\n" + totalTransferido + "\n" +
+                "Total retirado:\n" + totalRetirado+ "\n" +
+                "Su mayor gasto fué por\n" + encontrarMayorGasto() + "\n" +
+                "Transacciones atipicas:\n" + consultarAtipicas()+"\n"; 
+    }
+    public double encontrarMayorGasto(){
+        return listaMonederos.stream()
+        .flatMap(monedero -> monedero.getListaTransacciones().stream())
+        .filter(t -> !(t instanceof Deposito))
+        .mapToDouble(Transaccion:: getMonto).max()
+        .orElse(0);
+    }
+    public String consultarAtipicas(){
+        String detallerAtipica="";
+        for(Monedero m: listaMonederos){
+            for(Transaccion t: m.getListaTransacciones()){
+                if (t.getAtipica()) {
+                detallerAtipica+= "Código: " + t.getCodigo() + "\n"
+                                 + "Monto: $" + t.getMonto() + "\n"
+                                 + "Fecha: " + t.getFecha() + "\n"
+                                 + "-------------------\n";
+                }
+            }
+        }
+        if (detalleAtipicas.equals("")) {
+        return "Ninguna";
+    }
+    return detalleAtipicas;
+    }
 }
 

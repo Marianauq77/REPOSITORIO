@@ -146,7 +146,7 @@ public class Main {
                         "0. Salir"));
         return opcion;
     }
-    public void crearOtroMonedero(MonederoVirtual monederoVirtual){
+    public static void crearOtroMonedero(MonederoVirtual monederoVirtual){
         String codigo;
         boolean existe;
         do{

@@ -3,8 +3,9 @@ package co.edu.uniquindio.poo.app;
 
 import co.edu.uniquindio.poo.model.*;
 
-import javax.swing.*;   
+import javax.swing.*;
 
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.util.Optional;  
 
@@ -24,12 +25,17 @@ public class Main {
 
         int opcion;
         do{
+            try{
             JOptionPane.showMessageDialog(null,"===MENÚ===");
             opcion = Integer.valueOf(JOptionPane.showInputDialog(null,
                     "Por favor seleccione una opcion :\n" +
                             "1. Iniciar Sesion\n" +
                             "2. Registrarse \n"+
                             "0. Salir"));
+                
+            } catch (NumerFormatException | NullPointerException e) {
+                opcion=-1;  //Si se ingresa un texto  o no se ingresa nada atrapa la excepcion 
+            }
             switch (opcion){
                 case 1:
                     iniciarSesion(monederoVirtual);
@@ -75,6 +81,7 @@ public class Main {
                         case 9:
                             break;
                         case 10:
+                            ConsultarReporteGastos(monederoVirtual);
                             break;
                         case 11:
                             crearOtroMonedero(monederoVirtual);
@@ -142,6 +149,7 @@ public class Main {
         //Menú que se muestra cuando el usuario ya inicio sesion o se registro, es decir, cuando ya hay un usuario actual
     public static int mostrarMenuCliente (MonederoVirtual monederoVirtual){
         int opcion;
+        try{
         opcion = Integer.valueOf(JOptionPane.showInputDialog(null,
                 "Por favor seleccione una opcion :\n" +
                         "1. Realizar transferencia \n" +
@@ -156,17 +164,26 @@ public class Main {
                         "10.Consultar reporte gastos \n" +
                         "11.Crear otra monedero \n"+
                         "0. Salir"));
+        }catch(NumerFormatException | NullPointerException e){
+            opcion=-1;
+        }
         return opcion;  
     }
     public static void  realizarTransferencia (MonederoVirtual monederoVirtual, LocalDate fecha, boolean programada){
         String codigo= JOptionPane.showInputDialog(null, "Ingrese el codigo del monedero desde el cual quiere hacer la transferencia:");
         Optional<Monedero> monederoUsuario= usuarioActual.buscarMonederoUsuario(codigo);
         if(monederoUsuario.isPresent()){
+            try{
             Monedero monederoOrigen=monederoUsuario.get();
-            Double monto=Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese el monto de  la transferencia:"));
+            double monto=Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese el monto de  la transferencia:"));
             String codigoDestinatario=JOptionPane.showInputDialog(null, "Ingrese el codigo del monedero del destinatario:");
             String resultado=monederoVirtual.transferir(usuarioActual,monederoOrigen, monto, codigoDestinatario, fecha, programada);
             JOptionPane.showMessageDialog(null, resultado); 
+            }catch(NumberFormatException | NullPointerException e){
+                JOptionPane.showMessageDialog(null, "Datos invalidos");
+            }catch (MontoInvalidoException | SaldoInsuficienteException e) {
+                JOptionPane.showMessageDialog(null, e.getMessage()); //Muestra cualquiera de las excepciones que encuentre
+            }
         }else{  
            JOptionPane.showMessageDialog(null, "No existe un monedero con el codigo"+codigo); 
         }
@@ -177,14 +194,16 @@ public class Main {
         String codigoMonedero= JOptionPane.showInputDialog(null, "Ingrese el codigo del monedero al cual le quiere hacer el deposito:");
         Optional<Monedero> monedero= monederoVirtual.buscarMonederoPorCodigo(codigoMonedero);
         if(monedero.isPresent()){
+            try{
             String montoMensaje= JOptionPane.showInputDialog(null, "Ingrese el monto del deposito:");
             double montoDeposito= Double.parseDouble(montoMensaje);
-            if(montoDeposito<=0){
-                JOptionPane.showMessageDialog(null, "El monto del deposito debe ser mayor a 0");
-                return;
-            }
             String resultado=monederoVirtual.depositar(usuarioActual, monedero.get(), montoDeposito, fecha, programada);
             JOptionPane.showMessageDialog(null, resultado );
+            }catch(NumberFormatException | NullPointerException e){
+                JOptionPane.showMessageDialog(null, "Datos invalidos");
+            }catch (MontoInvalidoException e) {
+                JOptionPane.showMessageDialog(null, e.getMessage()); 
+            }
         }else{
               JOptionPane.showMessageDialog(null, "No existe un monedero con el codigo"+codigoMonedero); 
         }
@@ -193,10 +212,16 @@ public class Main {
         String codigoMonedero=JOptionPane.showInputDialog(null, "Ingrese el codigo del monedero del cual quiere hacer el retiro:");
         Optional<Monedero> monederoUsuario= usuarioActual.buscarMonederoUsuario(codigoMonedero);
         if(monederoUsuario.isPresent()){
+            try{
             Monedero monedero= monederoUsuario.get();
             double montoRetiro= Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese el monto del retiro:"));
             String resultado=monederoVirtual.retirar(usuarioActual, monedero, montoRetiro);
             JOptionPane.showMessageDialog(null, resultado);
+            }catch(NumberFormatException | NullPointerException e){
+                JOptionPane.showMessageDialog(null, "Datos invalidos");
+            }catch (MontoInvalidoException| SaldoInsuficienteException e) {
+                JOptionPane.showMessageDialog(null, e.getMessage()); 
+            }
         }else{
             JOptionPane.showMessageDialog(null, "No existe un monedero con el codigo"+codigoMonedero);
         }
@@ -258,25 +283,37 @@ public class Main {
 
     }
     public static void canjearPuntos (MonederoVirtual monederoVirtual){
+        try{
         int opcion= Integer.parseInt(JOptionPane.showInputDialog(null,
-            "Usted tiene: "+ usuarioActual.getPuntosAcumulados+" puntos\n" +
+            "Usted tiene: "+ usuarioActual.getPuntosAcumulados()+" puntos\n" +
             "ingrese el beneficio por el cual quiere canjear sus puntos:\n"+ 
             "1. 100 puntos:Reducción del 10% en la comisión por transferencias.\n" +
             "2. 500 puntos:Un mes sin cargos por retiros. \n"+
-            "3. 1000 puntos:Bono de saldo de 50 unidades en el monedero." +
+            "3. 1000 puntos:Bono de saldo de 50 unidades en el monedero." + "\n"+
             "0. Cancelar"));
-            if(opcion=0){
+        }catch(NumberFormatException | NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Datos invalidos");
+        }
+            if(opcion==0){
                 return;
             }
 
             switch (opcion) {
                 case 1:
+                    try{
                     String resultado1=monederoVirtual.aplicarbeneficio100(usuarioActual);
                     JOptionPane.showMessageDialog(null, resultado1);
+                     }catch(PuntosInsuficientesException e){
+                        JOptionPane.showMessageDialog(null, e.getMessage());
+                    }
                     break;
                 case 2:
+                    try{
                     String resultado2=monederoVirtual.aplicarbeneficio500(usuarioActual);
                     JOptionPane.showMessageDialog(null, resultado2);
+                    }catch(PuntosInsuficientesException e){
+                        JOptionPane.showMessageDialog(null, e.getMessage());
+                    }
                     break;
 
                 case 3:
@@ -287,23 +324,40 @@ public class Main {
                     return;
                     }
                     Monedero monedero= monederoUsuario.get();
-                    String resultado3=monederoVirtual.aplicarbeneficio1000(usarioActual, monedero);
+                    try{
+                    String resultado3=monederoVirtual.aplicarbeneficio1000(usuarioActual, monedero);
                     JOptionPane.showMessageDialog(null, resultado3);
+                    }catch(PuntosInsuficientesException e){
+                        JOptionPane.showMessageDialog(null, e.getMessage());
+                    }
                     break;
             
                 default:
                     JOptionPane.showMessageDialog(null, "Opción no válida");
                     break;
             }
-    
+    }
+
+    public static void ConsultarReporteGastos(MonederoVirtual monederoVirtual){
+        String resultado=usuarioActual.consultarReportesGastos();
+        JOptionPane.showMessageDialog(null, resultado);
     }
     public static void crearOtroMonedero(MonederoVirtual monederoVirtual){
         String codigo;
         boolean existe;
         do{
-
+        codigo = JOptionPane.showInputDialog(null, "Ingrese un código para su monedero:");
+        existe = monederoVirtual.verificarCodigoMonederoExiste(codigo);
+        if(existe){
+            JOptionPane.showMessageDialog(null, "Ese código ya existe, elija otro");
+        }
         }while(existe); //La misma logica que cuando  se creo el principal
-
+        nombre = JOptionPane.showInputDialog(null, "Ingrese un nombre para su monedero:");
+        int ingresoTipo=Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el tipo de moendero que desea crear:\n"
+            +"0. AHORROS\n"+
+             "1. GASTOS_DIARIOS"));
+        TipoMonedero tipoMonedero=TipoMonedero[ingresoTipo];
+        monederoVirtual.crearMonedero(usuarioActual, codigo, nombre.toUpperCase(), TipoMonedero, 0);
+        JOptionPane.showMessageDialog(null, "Registro exitoso.");
     }
-
 }
