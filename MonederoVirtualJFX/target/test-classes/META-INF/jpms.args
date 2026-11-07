@@ -1,0 +1,4 @@
+--patch-module
+co.edu.uniquindio.poo.monederovirtualjfx=_
+--add-reads
+co.edu.uniquindio.poo.monederovirtualjfx=ALL-UNNAMED

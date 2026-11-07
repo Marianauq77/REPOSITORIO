@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="520.0" spacing="20.0" style="-fx-background-color: #F4F6F9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.monederovirtualjfx.viewController.MenuViewController">
+
+    <padding>
+        <Insets bottom="35.0" left="45.0" right="45.0" top="35.0" />
+    </padding>
+
+    <children>
+        <VBox alignment="CENTER" spacing="5.0">
+            <Label style="-fx-text-fill: #1E293B;" text=" Monedero Virtual">
+                <font>
+                    <Font name="System Bold" size="24.0" />
+                </font>
+            </Label>
+            <Label fx:id="lblBienvenido" style="-fx-text-fill: #64748B;" text="Bienvenido" wrapText="true">
+                <font>
+                    <Font size="13.0" />
+                </font>
+            </Label>
+        </VBox>
+
+        <HBox alignment="CENTER" spacing="15.0">
+            <children>
+                <VBox alignment="CENTER" spacing="5.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 18; -fx-border-color: #E2E8F0; -fx-border-radius: 12;" HBox.hgrow="ALWAYS">
+                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12px;" text="Puntos acumulados" />
+                    <Label fx:id="lblPuntos" style="-fx-text-fill: #1E293B; -fx-font-size: 20px; -fx-font-weight: bold;" text="0" />
+                </VBox>
+                <VBox alignment="CENTER" spacing="5.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 18; -fx-border-color: #E2E8F0; -fx-border-radius: 12;" HBox.hgrow="ALWAYS">
+                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12px;" text="Rango" />
+                    <Label fx:id="lblRango" style="-fx-text-fill: #1E293B; -fx-font-size: 20px; -fx-font-weight: bold;" text="BRONCE" />
+                </VBox>
+            </children>
+        </HBox>
+
+        <VBox spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 18; -fx-border-color: #E2E8F0; -fx-border-radius: 12;">
+            <children>
+                <Label style="-fx-text-fill: #334155; -fx-font-weight: bold;" text="Mis monederos" />
+                <Label fx:id="lblMonederos" style="-fx-text-fill: #475569; -fx-font-size: 13px;" text="Cargando..." wrapText="true" />
+            </children>
+        </VBox>
+
+        <Label style="-fx-text-fill: #64748B; -fx-font-size: 12px;" text="Las operaciones del monedero se conectarán en los siguientes pasos." wrapText="true" />
+
+        <Button maxWidth="1.7976931348623157E308" onAction="#cerrarSesion" prefHeight="45.0" style="-fx-background-color: #DC2626; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold; -fx-font-size: 14px; -fx-cursor: hand;" text="Cerrar sesión" />
+    </children>
+</VBox>

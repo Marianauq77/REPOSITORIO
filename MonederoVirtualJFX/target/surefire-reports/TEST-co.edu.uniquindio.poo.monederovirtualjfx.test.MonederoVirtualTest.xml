@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.093" tests="25" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="25"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\suare\OneDrive\Documents\REPOSITORIO NUEVO\REPOSITORIO\MonederoVirtualJFX\target\test-classes;C:\Users\suare\OneDrive\Documents\REPOSITORIO NUEVO\REPOSITORIO\MonederoVirtualJFX\target\classes;C:\Users\suare\.m2\repository\org\openjfx\javafx-controls\21.0.5\javafx-controls-21.0.5.jar;C:\Users\suare\.m2\repository\org\openjfx\javafx-controls\21.0.5\javafx-controls-21.0.5-win.jar;C:\Users\suare\.m2\repository\org\openjfx\javafx-graphics\21.0.5\javafx-graphics-21.0.5.jar;C:\Users\suare\.m2\repository\org\openjfx\javafx-graphics\21.0.5\javafx-graphics-21.0.5-win.jar;C:\Users\suare\.m2\repository\org\openjfx\javafx-base\21.0.5\javafx-base-21.0.5.jar;C:\Users\suare\.m2\repository\org\openjfx\javafx-base\21.0.5\javafx-base-21.0.5-win.jar;C:\Users\suare\.m2\repository\org\openjfx\javafx-fxml\21.0.5\javafx-fxml-21.0.5.jar;C:\Users\suare\.m2\repository\org\openjfx\javafx-fxml\21.0.5\javafx-fxml-21.0.5-win.jar;C:\Users\suare\.m2\repository\org\junit\jupiter\junit-jupiter\5.11.3\junit-jupiter-5.11.3.jar;C:\Users\suare\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.3\junit-jupiter-api-5.11.3.jar;C:\Users\suare\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\suare\.m2\repository\org\junit\platform\junit-platform-commons\1.11.3\junit-platform-commons-1.11.3.jar;C:\Users\suare\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\suare\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.3\junit-jupiter-params-5.11.3.jar;C:\Users\suare\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.3\junit-jupiter-engine-5.11.3.jar;C:\Users\suare\.m2\repository\org\junit\platform\junit-platform-engine\1.11.3\junit-platform-engine-1.11.3.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="America/Bogota"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="25"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="CO"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-25.0.4\bin"/>
+    <property name="sun.java.command" value="C:\Users\suare\AppData\Local\Temp\surefire11309073939257005375\surefirebooter-20261104113250671_3.jar C:\Users\suare\AppData\Local\Temp\surefire11309073939257005375 2026-11-04T11-32-49_150-jvmRun1 surefire-20261104113250671_1tmp surefire_0-20261104113250671_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\suare\OneDrive\Documents\REPOSITORIO NUEVO\REPOSITORIO\MonederoVirtualJFX\target\test-classes;C:\Users\suare\OneDrive\Documents\REPOSITORIO NUEVO\REPOSITORIO\MonederoVirtualJFX\target\classes;C:\Users\suare\.m2\repository\org\openjfx\javafx-controls\21.0.5\javafx-controls-21.0.5.jar;C:\Users\suare\.m2\repository\org\openjfx\javafx-controls\21.0.5\javafx-controls-21.0.5-win.jar;C:\Users\suare\.m2\repository\org\openjfx\javafx-graphics\21.0.5\javafx-graphics-21.0.5.jar;C:\Users\suare\.m2\repository\org\openjfx\javafx-graphics\21.0.5\javafx-graphics-21.0.5-win.jar;C:\Users\suare\.m2\repository\org\openjfx\javafx-base\21.0.5\javafx-base-21.0.5.jar;C:\Users\suare\.m2\repository\org\openjfx\javafx-base\21.0.5\javafx-base-21.0.5-win.jar;C:\Users\suare\.m2\repository\org\openjfx\javafx-fxml\21.0.5\javafx-fxml-21.0.5.jar;C:\Users\suare\.m2\repository\org\openjfx\javafx-fxml\21.0.5\javafx-fxml-21.0.5-win.jar;C:\Users\suare\.m2\repository\org\junit\jupiter\junit-jupiter\5.11.3\junit-jupiter-5.11.3.jar;C:\Users\suare\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.3\junit-jupiter-api-5.11.3.jar;C:\Users\suare\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\suare\.m2\repository\org\junit\platform\junit-platform-commons\1.11.3\junit-platform-commons-1.11.3.jar;C:\Users\suare\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\suare\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.3\junit-jupiter-params-5.11.3.jar;C:\Users\suare\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.3\junit-jupiter-engine-5.11.3.jar;C:\Users\suare\.m2\repository\org\junit\platform\junit-platform-engine\1.11.3\junit-platform-engine-1.11.3.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\suare"/>
+    <property name="user.language" value="es"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-07-21"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-25.0.4"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\suare\OneDrive\Documents\REPOSITORIO NUEVO\REPOSITORIO\MonederoVirtualJFX"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\suare\AppData\Local\Temp\surefire11309073939257005375\surefirebooter-20261104113250671_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="25.0.4+7-LTS-189"/>
+    <property name="user.name" value="suare"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\suare\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\suare\AppData\Local\Temp\"/>
+    <property name="java.version" value="25.0.4"/>
+    <property name="user.dir" value="C:\Users\suare\OneDrive\Documents\REPOSITORIO NUEVO\REPOSITORIO\MonederoVirtualJFX"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-25.0.4\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\suare\AppData\Local\Programs\Python\Python314\Scripts\;C:\Users\suare\AppData\Local\Programs\Python\Python314\;C:\Users\suare\AppData\Local\Microsoft\WindowsApps;C:\Users\suare\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\suare\AppData\Local\GitHubDesktop\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2026.2.1\bin;C:\Users\suare\AppData\Local\Programs\Microsoft VS Code\bin\copilot-shim;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25.0.4+7-LTS-189"/>
+    <property name="stdin.encoding" value="Cp1252"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="69.0"/>
+  </properties>
+  <testcase name="transferirMontoNegativo" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.011">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest transferirMontoNegativo
+INFO: Inicio de prueba transferirMontoNegativo...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest transferirMontoNegativo
+INFO: Fin de prueba transferirMontoNegativo...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="depositarMontoNegativo" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.004">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest depositarMontoNegativo
+INFO: Inicio de prueba depositarMontoNegativo...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest depositarMontoNegativo
+INFO: Fin de prueba depositarMontoNegativo...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="buscarUsuarioInexistente" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.003">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest buscarUsuarioInexistente
+INFO: Inicio de prueba buscarUsuarioInexistente...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest buscarUsuarioInexistente
+INFO: Fin de prueba buscarUsuarioInexistente...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="crearUsuarioDuplicado" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.003">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest crearUsuarioDuplicado
+INFO: Inicio de prueba crearUsuarioDuplicado...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest crearUsuarioDuplicado
+INFO: Fin de prueba crearUsuarioDuplicado...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="retirarDisminuyeSaldoYRegistra" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.006">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest retirarDisminuyeSaldoYRegistra
+INFO: Inicio de prueba retirarDisminuyeSaldoYRegistra...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest retirarDisminuyeSaldoYRegistra
+INFO: Fin de prueba retirarDisminuyeSaldoYRegistra...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="historialMonederoInexistente" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.002">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest historialMonederoInexistente
+INFO: Inicio de prueba historialMonederoInexistente...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest historialMonederoInexistente
+INFO: Fin de prueba historialMonederoInexistente...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="buscarMonederoInexistente" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.004">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest buscarMonederoInexistente
+INFO: Inicio de prueba buscarMonederoInexistente...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest buscarMonederoInexistente
+INFO: Fin de prueba buscarMonederoInexistente...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="transferirSaldoInsuficiente" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.004">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest transferirSaldoInsuficiente
+INFO: Inicio de prueba transferirSaldoInsuficiente...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest transferirSaldoInsuficiente
+INFO: Fin de prueba transferirSaldoInsuficiente...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="retirarMontoNegativo" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.003">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest retirarMontoNegativo
+INFO: Inicio de prueba retirarMontoNegativo...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest retirarMontoNegativo
+INFO: Fin de prueba retirarMontoNegativo...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="transferirDestinoInexistente" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.002">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest transferirDestinoInexistente
+INFO: Inicio de prueba transferirDestinoInexistente...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest transferirDestinoInexistente
+INFO: Fin de prueba transferirDestinoInexistente...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="historialVacio" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.002">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest historialVacio
+INFO: Inicio de prueba historialVacio...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest historialVacio
+INFO: Fin de prueba historialVacio...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="verificarCodigoNuevo" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.003">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest verificarCodigoNuevo
+INFO: Inicio de prueba verificarCodigoNuevo...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest verificarCodigoNuevo
+INFO: Fin de prueba verificarCodigoNuevo...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="crearUsuarioNuevo" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.002">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest crearUsuarioNuevo
+INFO: Inicio de prueba crearUsuarioNuevo...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest crearUsuarioNuevo
+INFO: Fin de prueba crearUsuarioNuevo...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="generarCodigoTransaccion" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.002">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest generarCodigoTransaccion
+INFO: Inicio de prueba generarCodigoTransaccion...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest generarCodigoTransaccion
+INFO: Fin de prueba generarCodigoTransaccion...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="buscarMonederoExistente" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.002">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest buscarMonederoExistente
+INFO: Inicio de prueba buscarMonederoExistente...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest buscarMonederoExistente
+INFO: Fin de prueba buscarMonederoExistente...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="transferirExitosa" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.002">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest transferirExitosa
+INFO: Inicio de prueba transferirExitosa...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest transferirExitosa
+INFO: Fin de prueba transferirExitosa...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="historialConTransacciones" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.006">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest historialConTransacciones
+INFO: Inicio de prueba historialConTransacciones...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest historialConTransacciones
+INFO: Fin de prueba historialConTransacciones...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="notificacionesMonederoInexistente" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.003">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest notificacionesMonederoInexistente
+INFO: Inicio de prueba notificacionesMonederoInexistente...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest notificacionesMonederoInexistente
+INFO: Fin de prueba notificacionesMonederoInexistente...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="transferirProgramada" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.002">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest transferirProgramada
+INFO: Inicio de prueba transferirProgramada...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest transferirProgramada
+INFO: Fin de prueba transferirProgramada...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="depositarProgramadoNoAplicaSaldo" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.001">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest depositarProgramadoNoAplicaSaldo
+INFO: Inicio de prueba depositarProgramadoNoAplicaSaldo...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest depositarProgramadoNoAplicaSaldo
+INFO: Fin de prueba depositarProgramadoNoAplicaSaldo...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="crearMonederoAgregaEnAmbasListas" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.002">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest crearMonederoAgregaEnAmbasListas
+INFO: Inicio de prueba crearMonederoAgregaEnAmbasListas...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest crearMonederoAgregaEnAmbasListas
+INFO: Fin de prueba crearMonederoAgregaEnAmbasListas...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="notificacionesVacias" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.003">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest notificacionesVacias
+INFO: Inicio de prueba notificacionesVacias...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest notificacionesVacias
+INFO: Fin de prueba notificacionesVacias...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="ejecutarDepositoProgramadoDeHoy" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.004">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest ejecutarDepositoProgramadoDeHoy
+INFO: Inicio de prueba ejecutarDepositoProgramadoDeHoy...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest ejecutarDepositoProgramadoDeHoy
+INFO: Fin de prueba ejecutarDepositoProgramadoDeHoy...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="historialOtroUsuario" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.002">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest historialOtroUsuario
+INFO: Inicio de prueba historialOtroUsuario...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest historialOtroUsuario
+INFO: Fin de prueba historialOtroUsuario...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+  <testcase name="depositarAumentaSaldoYRegistra" classname="co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest" time="0.001">
+    <system-err><![CDATA[nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest setUp
+INFO: Inicio de configuración de MonederoVirtualTest...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest depositarAumentaSaldoYRegistra
+INFO: Inicio de prueba depositarAumentaSaldoYRegistra...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest depositarAumentaSaldoYRegistra
+INFO: Fin de prueba depositarAumentaSaldoYRegistra...
+nov 04, 2026 11:32:51 A. M. co.edu.uniquindio.poo.monederovirtualjfx.test.MonederoVirtualTest tearDown
+INFO: Fin de la prueba de MonederoVirtual...
+]]></system-err>
+  </testcase>
+</testsuite>
